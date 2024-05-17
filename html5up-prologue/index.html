@@ -6,11 +6,27 @@
 -->
 <html>
 	<head>
-		<title>Prologue by HTML5 UP</title>
+		<title>신명호 Portfolio</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="assets/css/main.css" />
 	</head>
+	
+	<style>
+		.icon.fa-kakao {
+			background: url('images/kakao.png') no-repeat center center;
+			background-size: cover;
+		}
+		.icon.fa-phon {
+			background: url('images/phon.png') no-repeat center center;
+			background-size: cover;
+		}
+		.icon.fa-mail {
+			background: url('images/kakao.png') no-repeat center center;
+			background-size: cover;
+		}
+		</style>
+
 	<body class="is-preload">
 
 		<!-- Header -->
@@ -21,16 +37,16 @@
 					<!-- Logo -->
 						<div id="logo">
 							<span class="image avatar48"><img src="images/avatar.jpg" alt="" /></span>
-							<h1 id="title">Jane Doe</h1>
-							<p>Hyperspace Engineer</p>
+							<h1 id="title">신명호</h1>
+							<p>Geospatial Information Engineer</p>
 						</div>
 
 					<!-- Nav -->
 						<nav id="nav">
 							<ul>
 								<li><a href="#top" id="top-link"><span class="icon solid fa-home">Intro</span></a></li>
-								<li><a href="#portfolio" id="portfolio-link"><span class="icon solid fa-th">Portfolio</span></a></li>
 								<li><a href="#about" id="about-link"><span class="icon solid fa-user">About Me</span></a></li>
+								<li><a href="#portfolio" id="portfolio-link"><span class="icon solid fa-th">Portfolio</span></a></li>
 								<li><a href="#contact" id="contact-link"><span class="icon solid fa-envelope">Contact</span></a></li>
 							</ul>
 						</nav>
@@ -41,11 +57,8 @@
 
 					<!-- Social Icons -->
 						<ul class="icons">
-							<li><a href="#" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
-							<li><a href="#" class="icon brands fa-facebook-f"><span class="label">Facebook</span></a></li>
-							<li><a href="#" class="icon brands fa-github"><span class="label">Github</span></a></li>
-							<li><a href="#" class="icon brands fa-dribbble"><span class="label">Dribbble</span></a></li>
-							<li><a href="#" class="icon solid fa-envelope"><span class="label">Email</span></a></li>
+							<li><a href="#" onclick="openImageInNewWindow('images/kakaoQR.jpg', '카카오톡친구추가')" class="icon brands fa-kakao"><span class="label">kakaotalk</span></a></li>
+							<li><a href="#" onclick="openImageInNewWindow('images/kakaoQR.jpg', '연락처복사')" class="icon brands fa-phon"><span class="label">phonnumber</span></a></li>
 						</ul>
 
 				</div>
@@ -60,76 +73,20 @@
 						<div class="container">
 
 							<header>
-								<h2 class="alt">Hi! I'm <strong>Prologue</strong>, a <a href="http://html5up.net/license">free</a> responsive<br />
-								site template designed by <a href="http://html5up.net">HTML5 UP</a>.</h2>
-								<p>Ligula scelerisque justo sem accumsan diam quis<br />
-								vitae natoque dictum sollicitudin elementum.</p>
+								<h2 class="alt">안녕하세요! <br /> <strong>공간정보산업 경력 6년</strong>,<br />
+								 <strong>공간정보엔지니어 신명호</strong> 입니다!</h2><hr>
+								<p style="font-size : 13px";>#GISDB구축 #정밀도로지도구축 #POI구축 #수치지도제작 #지하시설물 #국가기준점설치&이전<br />
+								#GNSS #RTK멀티콥터드론 #MMS #지거 #지하시설물탐사기 #토털스테이션<br />
+								#Python #SQL #HTML #QGIS #AutoCAD #Pix4D #SketchUP #2D #3D #Photoshop #Office</p>
 							</header>
 
 							<footer>
-								<a href="#portfolio" class="button scrolly">Magna Aliquam</a>
+								<a href="#portfolio" class="button scrolly">소개</a>
+								<a href="#portfolio" class="button scrolly">자격증</a>
+								<a href="#portfolio" class="button scrolly">능력</a>
+								<a href="#portfolio" class="button scrolly">경험</a>
+								<a href="#portfolio" class="button scrolly">비전</a>
 							</footer>
-
-						</div>
-					</section>
-
-				<!-- Portfolio -->
-					<section id="portfolio" class="two">
-						<div class="container">
-
-							<header>
-								<h2>Portfolio</h2>
-							</header>
-
-							<p>Vitae natoque dictum etiam semper magnis enim feugiat convallis convallis
-							egestas rhoncus ridiculus in quis risus amet curabitur tempor orci penatibus.
-							Tellus erat mauris ipsum fermentum etiam vivamus eget. Nunc nibh morbi quis
-							fusce hendrerit lacus ridiculus.</p>
-
-							<div class="row">
-								<div class="col-4 col-12-mobile">
-									<article class="item">
-										<a href="#" class="image fit"><img src="images/pic02.jpg" alt="" /></a>
-										<header>
-											<h3>Ipsum Feugiat</h3>
-										</header>
-									</article>
-									<article class="item">
-										<a href="#" class="image fit"><img src="images/pic03.jpg" alt="" /></a>
-										<header>
-											<h3>Rhoncus Semper</h3>
-										</header>
-									</article>
-								</div>
-								<div class="col-4 col-12-mobile">
-									<article class="item">
-										<a href="#" class="image fit"><img src="images/pic04.jpg" alt="" /></a>
-										<header>
-											<h3>Magna Nullam</h3>
-										</header>
-									</article>
-									<article class="item">
-										<a href="#" class="image fit"><img src="images/pic05.jpg" alt="" /></a>
-										<header>
-											<h3>Natoque Vitae</h3>
-										</header>
-									</article>
-								</div>
-								<div class="col-4 col-12-mobile">
-									<article class="item">
-										<a href="#" class="image fit"><img src="images/pic06.jpg" alt="" /></a>
-										<header>
-											<h3>Dolor Penatibus</h3>
-										</header>
-									</article>
-									<article class="item">
-										<a href="#" class="image fit"><img src="images/pic07.jpg" alt="" /></a>
-										<header>
-											<h3>Orci Convallis</h3>
-										</header>
-									</article>
-								</div>
-							</div>
 
 						</div>
 					</section>
@@ -154,6 +111,67 @@
 						</div>
 					</section>
 
+									<!-- Portfolio -->
+									<section id="portfolio" class="two">
+										<div class="container">
+				
+											<header>
+												<h2>Portfolio</h2>
+											</header>
+				
+											<p>Vitae natoque dictum etiam semper magnis enim feugiat convallis convallis
+											egestas rhoncus ridiculus in quis risus amet curabitur tempor orci penatibus.
+											Tellus erat mauris ipsum fermentum etiam vivamus eget. Nunc nibh morbi quis
+											fusce hendrerit lacus ridiculus.</p>
+				
+											<div class="row">
+												<div class="col-4 col-12-mobile">
+													<article class="item">
+														<a href="https://docs.google.com/spreadsheets/d/1oEj3EvF8XkQMqEMWj7sDBvDrlQnG3Cyi_5WWfHRw9lc/edit?usp=drive_link" class="image fit" target="_blank"><img src="images/pic02.jpg" alt="" /></a>
+														<header>
+															<h3>Ipsum Feugiat</h3>
+														</header>
+													</article>
+													<article class="item">
+														<a href="#" class="image fit"><img src="images/pic03.jpg" alt="" /></a>
+														<header>
+															<h3>Rhoncus Semper</h3>
+														</header>
+													</article>
+												</div>
+												<div class="col-4 col-12-mobile">
+													<article class="item">
+														<a href="#" class="image fit"><img src="images/pic04.jpg" alt="" /></a>
+														<header>
+															<h3>Magna Nullam</h3>
+														</header>
+													</article>
+													<article class="item">
+														<a href="#" class="image fit"><img src="images/pic05.jpg" alt="" /></a>
+														<header>
+															<h3>Natoque Vitae</h3>
+														</header>
+													</article>
+												</div>
+												<div class="col-4 col-12-mobile">
+													<article class="item">
+														<a href="#" class="image fit"><img src="images/pic06.jpg" alt="" /></a>
+														<header>
+															<h3>Dolor Penatibus</h3>
+														</header>
+													</article>
+													<article class="item">
+														<a href="#" class="image fit"><img src="images/pic07.jpg" alt="" /></a>
+														<header>
+															<h3>Orci Convallis</h3>
+														</header>
+													</article>
+												</div>
+											</div>
+				
+										</div>
+									</section>
+				
 				<!-- Contact -->
 					<section id="contact" class="four">
 						<div class="container">
@@ -203,6 +221,14 @@
 			<script src="assets/js/breakpoints.min.js"></script>
 			<script src="assets/js/util.js"></script>
 			<script src="assets/js/main.js"></script>
+
+			<!-- 카카오톡큐알뜨는스크립트 -->
+			<script>
+				function openImageInNewWindow(imageUrl, title) {
+					var newWindow = window.open("", title, "width=400,height=600,location=no");
+					newWindow.document.write("<html><head><title>" + title + "</title></head><body><img src='" + imageUrl + "' width='100%' height='100%'></body></html>");
+				}
+			</script>
 
 	</body>
 </html>
