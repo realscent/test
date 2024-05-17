@@ -13,6 +13,25 @@
 	</head>
 	
 	<style>
+		br.break-t {
+			display: none;
+		}
+		
+		@media only screen and (min-width: 480) {
+			br.break-m {
+				display: none;
+			}
+			br.break-t {
+				display: inline;
+			}
+		}
+		
+		@media only screen and (min-width: 768) {
+			br.break-t {
+				  display: none;
+			}
+		}
+		
 		.icon.fa-kakao {
 			background: url('images/kakao.png') no-repeat center center;
 			background-size: cover;
@@ -73,10 +92,10 @@
 						<div class="container">
 
 							<header>
-								<h2 class="alt">안녕하세요! <br /> <strong>공간정보산업 경력 6년</strong>,<br />
+								<h2 class="alt">안녕하세요! <br class='break-m'> <strong>공간정보산업 경력 6년</strong>,<br class='break-m'>
 								 <strong>공간정보엔지니어 신명호</strong> 입니다!</h2><hr>
-								<p style="font-size : 13px";>#GISDB구축 #정밀도로지도구축 #POI구축 #수치지도제작 #지하시설물 #국가기준점설치&이전<br />
-								#GNSS #RTK멀티콥터드론 #MMS #지거 #지하시설물탐사기 #토털스테이션<br />
+								<p style="font-size : 13px";>#GISDB구축 #정밀도로지도구축 #POI구축 #수치지도제작 #지하시설물 #국가기준점설치&이전<br class='break-m'>
+								#GNSS #RTK멀티콥터드론 #MMS #지거 #지하시설물탐사기 #토털스테이션<br class='break-m'>
 								#Python #SQL #HTML #QGIS #AutoCAD #Pix4D #SketchUP #2D #3D #Photoshop #Office</p>
 							</header>
 
