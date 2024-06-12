@@ -11,8 +11,19 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="assets/css/main.css" />
 	</head>
-	
+	<link rel="stylesheet" href="styles.css">
 	<style>
+  /* CSS for section effects */
+  .section {
+    opacity: 0;
+    transform: translateY(50px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+  }
+  
+  .section.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
 		@media screen and (max-width: 600px), screen and (min-width: 601px) and (max-width: 1200px) {
 			footer {
 				font-size: 12px;
@@ -126,8 +137,8 @@
 							<ul>
 								<li><a href="#top" id="top-link"><span class="icon solid fa-home">Intro</span></a></li>
 								<li><a href="#about" id="about-link"><span class="icon solid fa-user">About Me</span></a></li>
-								<li><a href="#portfolio" id="portfolio-link"><span class="icon solid fa-th">Portfolio</span></a></li>
-								<li><a href="#contact" id="contact-link"><span class="icon solid fa-envelope">Contact</span></a></li>
+								<li><a href="#portfolio" id="portfolio-link"><span class="icon solid fa-th">자격증</span></a></li>
+								<li><a href="#사업 소개" id="사업 소개-link"><span class="icon solid fa-envelope">사업 소개</span></a></li>
 							</ul>
 						</nav>
 
@@ -172,9 +183,7 @@
 							<footer>
 								<a href="#about" class="button scrolly">소개</a>
 								<a href="#portfolio" class="button scrolly">자격증</a>
-								<a href="#portfolio" class="button scrolly">능력</a>
-								<a href="#portfolio" class="button scrolly">경험</a>
-								<a href="#portfolio" class="button scrolly">비전</a>
+								<a href="#사업 소개" class="button scrolly">사업소개</a>
 							</footer>
 
 						</div>
@@ -188,10 +197,12 @@
 								<h2>About Me</h2>
 							</header>
 
-							<a href="#" class="image featured"><img src="images/pic08.jpg" alt="" /></a>
+							<a href="#" class="image featured"><img src="images/pic08.png" alt="" /></a>
 
-							<p>안녕하세요.<br class='break-m'>
-							신명호입니다. -소개글-
+							<p>
+							저는 공간정보 6년차로써 측량과 관련된 국가사업, 공공기관, 민간 사업을 두루 경험해 보았습니다. 
+							다양한 측량 및 GIS DB구축 용역의 착수부터 준공까지하며, 시스템 유지보수까지.
+							이러한 경험들을 바탕으로 </style="font-weight:900;">자동화 기술과 노하우</style>를 보여 드리겠습니다.
 							</p>
 
 						</div>
@@ -202,89 +213,106 @@
 										<div class="container">
 				
 											<header>
-												<h2>Portfolio</h2>
+												<h2>자격증</h2>
 											</header>
 				
-											<p>Vitae natoque dictum etiam semper magnis enim feugiat convallis convallis
-											egestas rhoncus ridiculus in quis risus amet curabitur tempor orci penatibus.
-											Tellus erat mauris ipsum fermentum etiam vivamus eget. Nunc nibh morbi quis
-											fusce hendrerit lacus ridiculus.</p>
+											<p> <strong>노력과, 성실함</strong><br class='break-m'>
+												저를 나타내는것은 꾸준함입니다.
+												어떠한 환경속에서도 배움의 자세를 잊지 않습니다. 
+											</p>
 				
-											<div class="row">
-												<div class="col-4 col-12-mobile">
-													<article class="item">
-														<a href="https://docs.google.com/spreadsheets/d/1oEj3EvF8XkQMqEMWj7sDBvDrlQnG3Cyi_5WWfHRw9lc/edit?usp=drive_link" class="image fit" target="_blank"><img src="images/pic02.jpg" alt="" /></a>
-														<header>
-															<h3>Ipsum Feugiat</h3>
-														</header>
-													</article>
-													<article class="item">
-														<a href="#" class="image fit"><img src="images/pic03.jpg" alt="" /></a>
-														<header>
-															<h3>Rhoncus Semper</h3>
-														</header>
-													</article>
+										    <div class="gallery">
+												<div class="gallery-item">
+													<img src="images/측량및지형공간정보기사.jpg" alt="측량및지형공간정보기사">
+													<div class="caption">측량및지형공간정보기사</div>
 												</div>
-												<div class="col-4 col-12-mobile">
-													<article class="item">
-														<a href="#" class="image fit"><img src="images/pic04.jpg" alt="" /></a>
-														<header>
-															<h3>Magna Nullam</h3>
-														</header>
-													</article>
-													<article class="item">
-														<a href="#" class="image fit"><img src="images/pic05.jpg" alt="" /></a>
-														<header>
-															<h3>Natoque Vitae</h3>
-														</header>
-													</article>
+												<div class="gallery-item">
+													<img src="images/측량및지형공간정보산업기사.jpg" alt="측량및지형공간정보산업기사">
+													<div class="caption">측량및지형공간정보산업기사</div>
 												</div>
-												<div class="col-4 col-12-mobile">
-													<article class="item">
-														<a href="#" class="image fit"><img src="images/pic06.jpg" alt="" /></a>
-														<header>
-															<h3>Dolor Penatibus</h3>
-														</header>
-													</article>
-													<article class="item">
-														<a href="#" class="image fit"><img src="images/pic07.jpg" alt="" /></a>
-														<header>
-															<h3>Orci Convallis</h3>
-														</header>
-													</article>
+												<div class="gallery-item">
+													<img src="images/측량기능사.jpg" alt="측량기능사">
+													<div class="caption">측량기능사</div>
+												</div>
+												<div class="gallery-item">
+													<img src="images/전산응용토목제도기능사.jpg" alt="전산응용토목제도기능사">
+													<div class="caption">전산응용토목제도기능사</div>
+												</div>
+												<div class="gallery-item">
+													<img src="images/지도제작기능사.jpg" alt="지도제작기능사">
+													<div class="caption">지도제작기능사</div>
+												</div>
+												<div class="gallery-item">
+													<img src="images/건설재료시험기능사.jpg" alt="건설재료시험기능사">
+													<div class="caption">건설재료시험기능사</div>
 												</div>
 											</div>
-				
-										</div>
+										
+											<div id="myModal" class="modal">
+												<span class="close">&times;</span>
+												<img class="modal-content" id="img01">
+												<div id="caption"></div>
+											</div>
+										
+											<script src="script.js"></script>
 									</section>
 				
-				<!-- Contact -->
-					<section id="contact" class="four">
+				<!-- 사업 소개 -->
+					<section id="사업 소개" class="four">
 						<div class="container">
 
 							<header>
-								<h2>Contact</h2>
+								<h2>사업 소개</h2>
 							</header>
 
-							<p>Elementum sem parturient nulla quam placerat viverra
-							mauris non cum elit tempus ullamcorper dolor. Libero rutrum ut lacinia
-							donec curae mus. Eleifend id porttitor ac ultricies lobortis sem nunc
-							orci ridiculus faucibus a consectetur. Porttitor curae mauris urna mi dolor.</p>
-
-							<form method="post" action="#">
-								<div class="row">
-									<div class="col-6 col-12-mobile"><input type="text" name="name" placeholder="Name" /></div>
-									<div class="col-6 col-12-mobile"><input type="text" name="email" placeholder="Email" /></div>
-									<div class="col-12">
-										<textarea name="message" placeholder="Message"></textarea>
-									</div>
-									<div class="col-12">
-										<input type="submit" value="Send Message" />
-									</div>
+							<div class="section">
+								<div class="image-container">
+									<span class="image avatar49"><img src="images/1.png" alt="사업 개요 이미지"></span>
 								</div>
-							</form>
-
+							</div>
+					
+							<div class="section">
+					
+								<div class="image-container">
+									<span class="image avatar50"><img src="images/2.1.png" alt=""></span>
+									<span class="image avatar51"><img src="images/측량장비2.png" alt=""></span>
+									<span class="image avatar52"><img src="images/2.3.png" alt=""></span>
+								</div>
+										</div>
+					
+							<div class="section">
+		
+								<div class="image-container">
+									<span class="image avatar53"><img src="images/3.PNG" alt="사업의 필요성 이미지"></span>
+								</div>
+				
+							</div>
+					
+							<div class="section">
+								<h2>기대 효과</h2>
+								<div class="image-container">
+									<span class="image avatar52"><img src="images/기대효과.png" alt="기대 효과 이미지"></span>
+								</div>
+								<ul>
+									<li>경제적 절감</li>
+									<li>안전한 도시 환경</li>
+									<li>데이터 통합</li>
+								</ul>
+							</div>
 						</div>
+						<hr>
+							<h2 class="alt"><strong>공간정보 시장은 다양합니다</strong></h2>
+							<p>	GIS DB구축용역, 정밀도로지도구축, 수치지형도제작, 지적재조사, 3D모델링, 디지털트윈 등등...
+								<h1>맨 첫단추는, 지하시설물 DB 구축 용역입니다.</h1> 
+								그 이유는, <br class='break-m'>
+								1. 사업시작이 쉽습니다<br class='break-m'>
+								2. A~Z까지 경험해보며 자동화와 노하우기술이 축적되었습니다<br class='break-m'>
+								3. 관로의 노후화교체, 신규관로매설, 보수, 도로공사 등은 꾸준히 있습니다.<br class='break-m'>
+								4. 작은 단위로 사업이 나오기 좋습니다.<br class='break-m'>
+								5. 청년창업지원과, 중소벤처기업지원, 지방소도시기업지원, 연구용역지원, 데이터베이스 및 공간정보사업 장려지원
+								따라서 사업 초기에 사업규모를 키우기 쉽습니다!<br class='break-m'>
+							</p>
+
 					</section>
 
 			</div>
@@ -293,8 +321,9 @@
 			<div id="footer">
 
 				<!-- Copyright -->
-					<ul class="copyright">
-						<li>&copy; Untitled. All rights reserved.</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+			
+					<ul class="신명호 : 010-8352-4471">
+						<li>&copy; 신명호 : 010-8352-4471</li><li>email: <a href="scent7942@gmail.com">scent7942@gmail.com</a></li>
 					</ul>
 
 			</div>
@@ -332,6 +361,26 @@ span.onclick = function() {
 }
 
 			</script>
-
+<script>
+	document.addEventListener('DOMContentLoaded', function () {
+	  var sections = document.querySelectorAll('#사업\\ 소개 .section');
+	  var options = {
+		threshold: 0.5
+	  };
+  
+	  var observer = new IntersectionObserver(function (entries, observer) {
+		entries.forEach(function (entry) {
+		  if (entry.isIntersecting) {
+			entry.target.classList.add('visible');
+			observer.unobserve(entry.target);
+		  }
+		});
+	  }, options);
+  
+	  sections.forEach(function (section) {
+		observer.observe(section);
+	  });
+	});
+  </script>
 	</body>
 </html>
