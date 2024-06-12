@@ -117,6 +117,35 @@
 			text-decoration: none;
 			cursor: pointer;
 		}
+		/* Add this CSS for responsive video */
+.video-container {
+    position: relative;
+    padding-bottom: 56.25%; /* 16:9 aspect ratio */
+    height: 0;
+    overflow: hidden;
+    max-width: 100%;
+    background: #000;
+}
+
+.video-container video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+.section .image-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 300px; /* 섹션 높이를 적절히 설정 */
+}
+.image.avatar50 img {
+    max-width: 100%;
+    height: auto;
+}
+
+
 	</style>	
 	<body class="is-preload">
 
@@ -204,7 +233,10 @@
 							다양한 측량 및 GIS DB구축 용역의 착수부터 준공까지하며, 시스템 유지보수까지.
 							이러한 경험들을 바탕으로 </style="font-weight:900;">자동화 기술과 노하우</style>를 보여 드리겠습니다.
 							</p>
-							<span class="video avatar53"><video  src="images/포트폴리오A4사이즈.mp4"  controls>요약영상</video></span>
+							<div class="video-container">
+								<video src="images/포트폴리오A4사이즈.mp4" controls>요약영상</video>
+							</div>
+					
 						</div>
 					</section>
 
@@ -258,62 +290,58 @@
 									</section>
 				
 				<!-- 사업 소개 -->
-					<section id="사업 소개" class="four">
-						<div class="container">
-
-							<header>
-								<h2>사업 소개</h2>
-							</header>
-
-							<div class="section">
-								<div class="image-container">
-									<span class="image avatar49"><img src="images/1.png" alt="사업 개요 이미지"></span>
-								</div>
-							</div>
-					
-							<div class="section">
-					
-								<div class="image-container">
-									<span class="image avatar50"><img src="images/2.1.png" alt=""></span>
-									<span class="image avatar51"><img src="images/측량장비2.png" alt=""></span>
-									<span class="image avatar52"><img src="images/2.3.png" alt=""></span>
-								</div>
-										</div>
-					
-							<div class="section">
-		
-								<div class="image-container">
-									<span class="image avatar53"><img src="images/3.PNG" alt="사업의 필요성 이미지"></span>
-								</div>
+				<section id="사업 소개" class="four">
+					<div class="container">
 				
-							</div>
-					
-							<div class="section">
-								<h2>기대 효과</h2>
-								<div class="image-container">
-									<span class="image avatar52"><img src="images/기대효과.png" alt="기대 효과 이미지"></span>
-								</div>
-								<ul>
-									<li>경제적 절감</li>
-									<li>안전한 도시 환경</li>
-									<li>데이터 통합</li>
-								</ul>
+						<header>
+							<h2>사업 소개</h2>
+						</header>
+				
+						<div class="section">
+							<div class="image-container">
+								<span class="image avatar49"><img src="images/1.png" alt="사업 개요 이미지"></span>
 							</div>
 						</div>
-						<hr>
-							<h2 class="alt"><strong>공간정보 시장은 다양합니다</strong></h2>
-							<p>	GIS DB구축용역, 정밀도로지도구축, 수치지형도제작, 지적재조사, 3D모델링, 디지털트윈 등등...
-								<h1>맨 첫단추는, 지하시설물 DB 구축 용역입니다.</h1> 
-								그 이유는, <br class='break-m'>
-								1. 사업시작이 쉽습니다<br class='break-m'>
-								2. A~Z까지 경험해보며 자동화와 노하우기술이 축적되었습니다<br class='break-m'>
-								3. 관로의 노후화교체, 신규관로매설, 보수, 도로공사 등은 꾸준히 있습니다.<br class='break-m'>
-								4. 작은 단위로 사업이 나오기 좋습니다.<br class='break-m'>
-								5. 청년창업지원과, 중소벤처기업지원, 지방소도시기업지원, 연구용역지원, 데이터베이스 및 공간정보사업 장려지원
-								따라서 사업 초기에 사업규모를 키우기 쉽습니다!<br class='break-m'>
-							</p>
-
-					</section>
+				
+						<div class="section">
+							<div class="image-container">
+								<span class="image avatar50"><img src="images/2.png" alt="운용장비 기술 간략"></span>
+							</div>
+						</div>
+				
+						<div class="section">
+							<div class="image-container">
+								<span class="image avatar51"><img src="images/3.PNG" alt="사업의 필요성 이미지"></span>
+							</div>
+						</div>
+				
+						<div class="section">
+							<h2>기대 효과</h2>
+							<div class="image-container">
+								<span class="image avatar52"><img src="images/기대효과.png" alt="기대 효과 이미지"></span>
+							</div>
+							<ul>
+								<li>경제적 절감</li>
+								<li>안전한 도시 환경</li>
+								<li>데이터 통합</li>
+							</ul>
+						</div>
+					</div>
+					<hr>
+					<h2 class="alt"><strong>공간정보 시장은 다양합니다</strong></h2>
+					<p>GIS DB구축용역, 정밀도로지도구축, 수치지형도제작, 지적재조사, 3D모델링, 디지털트윈 등등...
+						<h1>맨 첫단추는, 지하시설물 DB 구축 용역입니다.</h1>
+						그 이유는, <br class='break-m'>
+						1. 사업시작이 쉽습니다<br class='break-m'>
+						2. A~Z까지 경험해보며 자동화와 노하우기술이 축적되었습니다<br class='break-m'>
+						3. 관로의 노후화교체, 신규관로매설, 보수, 도로공사 등은 꾸준히 있습니다.<br class='break-m'>
+						4. 작은 단위로 사업이 나오기 좋습니다.<br class='break-m'>
+						5. 청년창업지원과, 중소벤처기업지원, 지방소도시기업지원, 연구용역지원, 데이터베이스 및 공간정보사업 장려지원
+						따라서 사업 초기에 사업규모를 키우기 쉽습니다!<br class='break-m'>
+					</p>
+				
+				</section>
+				
 
 			</div>
 
@@ -362,25 +390,27 @@ span.onclick = function() {
 
 			</script>
 <script>
-	document.addEventListener('DOMContentLoaded', function () {
-	  var sections = document.querySelectorAll('#사업\\ 소개 .section');
-	  var options = {
-		threshold: 0.5
-	  };
-  
-	  var observer = new IntersectionObserver(function (entries, observer) {
-		entries.forEach(function (entry) {
-		  if (entry.isIntersecting) {
-			entry.target.classList.add('visible');
-			observer.unobserve(entry.target);
-		  }
-		});
-	  }, options);
-  
-	  sections.forEach(function (section) {
-		observer.observe(section);
-	  });
-	});
+document.addEventListener('DOMContentLoaded', function () {
+    var sections = document.querySelectorAll('#사업\\ 소개 .section');
+    var options = {
+        rootMargin: '0px 0px -50% 0px',  // 화면의 50%가 지나면 트리거
+        threshold: 0.1
+    };
+
+    var observer = new IntersectionObserver(function (entries, observer) {
+        entries.forEach(function (entry) {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+                observer.unobserve(entry.target);
+            }
+        });
+    }, options);
+
+    sections.forEach(function (section) {
+        observer.observe(section);
+    });
+});
+
   </script>
 	</body>
 </html>
