@@ -110,7 +110,26 @@
 	max-width: 90%; /* Ensures the caption doesn't stretch too wide */
 	font-size: 1rem; /* Default font size */
   }
-  
+/* Ensure caption scales down on smaller screens */
+@media screen and (max-width: 600px) {
+    .caption {
+        font-size: 2vw; /* Increase relative size for smaller screens */
+    }
+}
+
+@media screen and (min-width: 601px) and (max-width: 1200px) {
+    .caption {
+        font-size: 2vw; /* Intermediate size for medium screens */
+    }
+}
+
+@media screen and (min-width: 1201px) {
+    .caption {
+        font-size: 2vw; /* Default relative size for larger screens */
+    }
+}
+
+			
 		/* Add Animation - Zoom in the Modal */
 		.modal-content, #caption { 
 			animation-name: zoom;
