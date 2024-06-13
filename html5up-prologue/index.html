@@ -79,60 +79,37 @@
 		
 /* Gallery Styles */
 .gallery {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-around;
-}
-
-.gallery-item {
-    position: relative;
-    margin: 10px;
-    width: calc(33.333% - 20px); /* Three items per row with spacing */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.gallery-item img {
-    width: 100%;
-    height: auto;
-    display: block;
-}
-
-/* Centering the caption and making its size relative to the gallery item */
-.caption {
-    position: absolute;
-    background: rgba(0, 0, 0, 0.7);
-    color: #fff;
-    text-align: center;
-    padding: 5px;
-    box-sizing: border-box;
-    border-radius: 5px; /* Optional: adds rounded corners */
-    max-width: 90%; /* Ensures the caption doesn't stretch too wide */
-    font-size: 3vw; /* Dynamic font size relative to viewport width */
-    line-height: 1.2; /* For better readability */
-    overflow-wrap: break-word; /* Ensure long words are broken */
-}
-
-/* Ensure caption scales down on smaller screens */
-@media screen and (max-width: 600px) {
-    .caption {
-        font-size: 2vw; /* Increase relative size for smaller screens */
-    }
-}
-
-@media screen and (min-width: 601px) and (max-width: 1200px) {
-    .caption {
-        font-size: 2vw; /* Intermediate size for medium screens */
-    }
-}
-
-@media screen and (min-width: 1201px) {
-    .caption {
-        font-size: 2vw; /* Default relative size for larger screens */
-    }
-}
-
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-around;
+  }
+  
+  .gallery-item {
+	position: relative;
+	margin: 10px;
+	width: calc(33.333% - 20px); /* Three items per row with spacing */
+	display: flex;
+	justify-content: center;
+	align-items: center;
+  }
+  
+  .gallery-item img {
+	width: 100%;
+	height: auto;
+	display: block;
+  }
+  
+  .caption {
+	position: absolute;
+	background: rgba(0, 0, 0, 0.7);
+	color: #fff;
+	text-align: center;
+	padding: 5px;
+	box-sizing: border-box;
+	border-radius: 5px; /* Optional: adds rounded corners */
+	max-width: 90%; /* Ensures the caption doesn't stretch too wide */
+	font-size: 1rem; /* Default font size */
+  }
   
 		/* Add Animation - Zoom in the Modal */
 		.modal-content, #caption { 
@@ -163,22 +140,22 @@
 			cursor: pointer;
 		}
 		/* Add this CSS for responsive video */
-.video-container {
-    position: relative;
-    padding-bottom: 56.25%; /* 16:9 aspect ratio */
-    height: 0;
-    overflow: hidden;
-    max-width: 100%;
-    background: #000;
-}
-
-.video-container video {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-}
+		.video-container {
+			position: relative;
+			padding-bottom: 56.25%; /* 16:9 aspect ratio */
+			height: 0;
+			overflow: hidden;
+			max-width: 100%;
+			background: #000;
+		}
+		
+		.video-container iframe {
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+		}
 .section .image-container {
     display: flex;
     justify-content: center;
@@ -279,7 +256,7 @@
 							이러한 경험들을 바탕으로 </style="font-weight:900;">자동화 기술과 노하우</style>를 보여 드리겠습니다.
 							</p>
 							<div class="video-container">
-								<video src="images/포트폴리오A4사이즈.mp4" controls>요약영상</video>
+								<iframe src="https://www.youtube-nocookie.com/embed/pfNGYVuxQqs?si=AHOJKgEdDIwsJ-Vk" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 							</div>
 					
 						</div>
@@ -301,11 +278,11 @@
 										    <div class="gallery">
 												<div class="gallery-item">
 													<img src="images/측량및지형공간정보기사.jpg" alt="측량및지형공간정보기사">
-													<div class="caption">측량 및<br class='break-m'>지형공간정보<br class='break-m'>기사</div>
+													<div class="caption">측량및지형공간정보기사</div>
 												</div>
 												<div class="gallery-item">
 													<img src="images/측량및지형공간정보산업기사.jpg" alt="측량및지형공간정보산업기사">
-													<div class="caption">측량 및<br class='break-m'>지형공간정보<br class='break-m'>산업기사</div>
+													<div class="caption">측량및지형공간정보산업기사</div>
 												</div>
 												<div class="gallery-item">
 													<img src="images/측량기능사.jpg" alt="측량기능사">
