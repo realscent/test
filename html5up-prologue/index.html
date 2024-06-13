@@ -77,50 +77,42 @@
 			max-width: 700px;
 		}
 		
-		/* Caption of Modal Image */
-		#caption {
-			margin: auto;
-			display: block;
-			width: 80%;
-			max-width: 700px;
-			text-align: center;
-			color: #ccc;
-			padding: 10px 0;
-			height: 150px;
-		}
+/* Gallery Styles */
+.gallery {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-around;
+  }
+  
+  .gallery-item {
+	position: relative;
+	margin: 10px;
+	width: calc(33.333% - 20px); /* Three items per row with spacing */
+  }
+  
+  .gallery-item img {
+	width: 100%;
+	height: auto;
+	display: block;
+  }
+  
+  .caption {
+	position: absolute;
+	bottom: 0;
+	width: 100%;
+	background: rgba(0, 0, 0, 0.7);
+	color: #fff;
+	text-align: center;
+	padding: 5px 0;
+	box-sizing: border-box;
+  }
 		
 		/* Add Animation - Zoom in the Modal */
 		.modal-content, #caption { 
 			animation-name: zoom;
 			animation-duration: 0.6s;
 		}
-		/* 기본 캡션 스타일 */
-		.caption {
-		  font-size: 16px;
-		  text-align: center;
-		  margin-top: 10px;
-		}
 		
-		/* 작은 화면 (모바일)에서의 캡션 스타일 */
-		@media screen and (max-width: 600px) {
-		  .caption {
-		    font-size: 12px;
-		  }
-		}
-		
-		/* 중간 크기 화면 (태블릿)에서의 캡션 스타일 */
-		@media screen and (min-width: 601px) and (max-width: 1200px) {
-		  .caption {
-		    font-size: 14px;
-		  }
-		}
-		
-		/* 큰 화면 (데스크탑)에서의 캡션 스타일 */
-		@media screen and (min-width: 1201px) {
-		  .caption {
-		    font-size: 16px;
-		  }
-		}
 		@keyframes zoom {
 			from {transform:scale(0)} 
 			to {transform:scale(1)}
