@@ -79,37 +79,60 @@
 		
 /* Gallery Styles */
 .gallery {
-	display: flex;
-	flex-wrap: wrap;
-	justify-content: space-around;
-  }
-  
-  .gallery-item {
-	position: relative;
-	margin: 10px;
-	width: calc(33.333% - 20px); /* Three items per row with spacing */
-	display: flex;
-	justify-content: center;
-	align-items: center;
-  }
-  
-  .gallery-item img {
-	width: 100%;
-	height: auto;
-	display: block;
-  }
-  
-  .caption {
-	position: absolute;
-	background: rgba(0, 0, 0, 0.7);
-	color: #fff;
-	text-align: center;
-	padding: 5px;
-	box-sizing: border-box;
-	border-radius: 5px; /* Optional: adds rounded corners */
-	max-width: 90%; /* Ensures the caption doesn't stretch too wide */
-	font-size: 1rem; /* Default font size */
-  }
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.gallery-item {
+    position: relative;
+    margin: 10px;
+    width: calc(33.333% - 20px); /* Three items per row with spacing */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.gallery-item img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* Centering the caption and making its size relative to the gallery item */
+.caption {
+    position: absolute;
+    background: rgba(0, 0, 0, 0.7);
+    color: #fff;
+    text-align: center;
+    padding: 5px;
+    box-sizing: border-box;
+    border-radius: 5px; /* Optional: adds rounded corners */
+    max-width: 90%; /* Ensures the caption doesn't stretch too wide */
+    font-size: 3vw; /* Dynamic font size relative to viewport width */
+    line-height: 1.2; /* For better readability */
+    overflow-wrap: break-word; /* Ensure long words are broken */
+}
+
+/* Ensure caption scales down on smaller screens */
+@media screen and (max-width: 600px) {
+    .caption {
+        font-size: 3vw; /* Increase relative size for smaller screens */
+    }
+}
+
+@media screen and (min-width: 601px) and (max-width: 1200px) {
+    .caption {
+        font-size: 3vw; /* Intermediate size for medium screens */
+    }
+}
+
+@media screen and (min-width: 1201px) {
+    .caption {
+        font-size: 3vw; /* Default relative size for larger screens */
+    }
+}
+
   
 		/* Add Animation - Zoom in the Modal */
 		.modal-content, #caption { 
