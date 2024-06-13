@@ -94,7 +94,33 @@
 			animation-name: zoom;
 			animation-duration: 0.6s;
 		}
+		/* 기본 캡션 스타일 */
+		.caption {
+		  font-size: 16px;
+		  text-align: center;
+		  margin-top: 10px;
+		}
 		
+		/* 작은 화면 (모바일)에서의 캡션 스타일 */
+		@media screen and (max-width: 600px) {
+		  .caption {
+		    font-size: 12px;
+		  }
+		}
+		
+		/* 중간 크기 화면 (태블릿)에서의 캡션 스타일 */
+		@media screen and (min-width: 601px) and (max-width: 1200px) {
+		  .caption {
+		    font-size: 14px;
+		  }
+		}
+		
+		/* 큰 화면 (데스크탑)에서의 캡션 스타일 */
+		@media screen and (min-width: 1201px) {
+		  .caption {
+		    font-size: 16px;
+		  }
+		}
 		@keyframes zoom {
 			from {transform:scale(0)} 
 			to {transform:scale(1)}
