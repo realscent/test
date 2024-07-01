@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Google Maps Iframe Selector</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            background-color: #f5f5f5;
+        }
+        #map-container {
+            width: 90%;
+            max-width: 1200px;
+            aspect-ratio: 4 / 3;
+            margin-top: 20px;
+            border: 1px solid #ccc;
+        }
+        iframe {
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+        .selector-container {
+            margin-top: 20px;
+        }
+        select {
+            padding: 10px;
+            font-size: 16px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+    </style>
+</head>
+<body>
+    <div class="selector-container">
+        <label for="daySelector">일차 선택:</label>
+        <select id="daySelector">
+            <option value="전체">전체</option>
+            <option value="1일차">1일차</option>
+            <option value="2일차">2일차</option>
+            <option value="3일차">3일차</option>
+            <option value="4일차">4일차</option>
+            <option value="5일차">5일차</option>
+        </select>
+    </div>
+    <div id="map-container">
+        <iframe id="mapFrame" src="https://www.google.com/maps/d/u/0/embed?mid=1cGKTkac676RtyeJx61E3s0EtKxQDrgI&ehbc=2E312F"></iframe>
+    </div>
+
+    <script>
+        document.getElementById('daySelector').addEventListener('change', function() {
+            var selectedValue = this.value;
+            var iframeSrc = '';
+
+            switch(selectedValue) {
+                case '전체':
+                    iframeSrc = 'https://www.google.com/maps/d/u/0/embed?mid=1cGKTkac676RtyeJx61E3s0EtKxQDrgI&ehbc=2E312F';
+                    break;
+                case '1일차':
+                    iframeSrc = 'https://www.google.com/maps/d/u/0/embed?mid=1cGKTkac676RtyeJx61E3s0EtKxQDrgI&ehbc=2E312F#1';
+                    break;
+                case '2일차':
+                    iframeSrc = 'https://www.google.com/maps/d/u/0/embed?mid=1cGKTkac676RtyeJx61E3s0EtKxQDrgI&ehbc=2E312F#2';
+                    break;
+                case '3일차':
+                    iframeSrc = 'https://www.google.com/maps/d/u/0/embed?mid=1cGKTkac676RtyeJx61E3s0EtKxQDrgI&ehbc=2E312F#3';
+                    break;
+                case '4일차':
+                    iframeSrc = 'https://www.google.com/maps/d/u/0/embed?mid=1cGKTkac676RtyeJx61E3s0EtKxQDrgI&ehbc=2E312F#4';
+                    break;
+                case '5일차':
+                    iframeSrc = 'https://www.google.com/maps/d/u/0/embed?mid=1cGKTkac676RtyeJx61E3s0EtKxQDrgI&ehbc=2E312F#5';
+                    break;
+                default:
+                    iframeSrc = 'https://www.google.com/maps/d/u/0/embed?mid=1cGKTkac676RtyeJx61E3s0EtKxQDrgI&ehbc=2E312F';
+            }
+
+            document.getElementById('mapFrame').src = iframeSrc;
+        });
+    </script>
+</body>
+</html>
