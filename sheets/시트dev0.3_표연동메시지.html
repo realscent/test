@@ -1,0 +1,2202 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+
+  <!-- (선택) 구글시트 export에 있던 리소스. 없어도 동작은 함 -->
+  <link type="text/css" rel="stylesheet" href="resources/sheet.css">
+
+  <title>Local Sheet Editor (GoogleSheet-like)</title>
+
+  <!-- ====== 네가 준 원본 스타일 그대로 ====== -->
+  <style type="text/css">
+    .ritz .waffle a { color: inherit; }
+
+    .ritz .waffle .s10 {
+      border-bottom: 1px SOLID #000000;
+      border-right: 1px SOLID #000000;
+      background-color: #ffffff;
+      text-align: center;
+      color: #000000;
+      font-family: "Malgun Gothic";
+      font-size: 11pt;
+      vertical-align: middle;
+      white-space: nowrap;
+      direction: ltr;
+      padding: 2px 3px 2px 3px;
+    }
+    .ritz .waffle .s22 {
+      border-bottom: 1px SOLID #000000;
+      background-color: #ffffff;
+      text-align: center;
+      color: #000000;
+      font-family: "Malgun Gothic";
+      font-size: 10pt;
+      vertical-align: middle;
+      white-space: nowrap;
+      direction: ltr;
+      padding: 2px 3px 2px 3px;
+    }
+    .ritz .waffle .s4 {
+      background-color: #ffffff;
+      text-align: center;
+      font-weight: bold;
+      color: #000000;
+      font-family: "Malgun Gothic";
+      font-size: 23pt;
+      vertical-align: middle;
+      white-space: nowrap;
+      direction: ltr;
+      padding: 2px 3px 2px 3px;
+    }
+    .ritz .waffle .s17 {
+      border-right: 1px SOLID #000000;
+      background-color: #ffffff;
+      text-align: left;
+      color: #000000;
+      font-family: "Malgun Gothic";
+      font-size: 10pt;
+      vertical-align: middle;
+      white-space: nowrap;
+      direction: ltr;
+      padding: 2px 3px 2px 3px;
+    }
+    .ritz .waffle .s13 {
+      border-bottom: 1px SOLID #000000;
+      border-right: 1px SOLID #000000;
+      background-color: #ffffff;
+      text-align: left;
+      color: #000000;
+      font-family: "Malgun Gothic";
+      font-size: 10pt;
+      vertical-align: middle;
+      white-space: nowrap;
+      direction: ltr;
+      padding: 2px 3px 2px 3px;
+    }
+    .ritz .waffle .s11 {
+      border-bottom: 1px SOLID #000000;
+      border-right: 1px SOLID #000000;
+      background-color: #b3b4ae;
+      text-align: center;
+      color: #000000;
+      font-family: "Malgun Gothic";
+      font-size: 10pt;
+      vertical-align: middle;
+      white-space: nowrap;
+      direction: ltr;
+      padding: 2px 3px 2px 3px;
+    }
+    .ritz .waffle .s12 {
+      border-bottom: 1px SOLID #000000;
+      border-right: 1px SOLID #000000;
+      background-color: #ffffff;
+      text-align: center;
+      color: #000000;
+      font-family: "Malgun Gothic";
+      font-size: 10pt;
+      vertical-align: middle;
+      white-space: nowrap;
+      direction: ltr;
+      padding: 2px 3px 2px 3px;
+    }
+    .ritz .waffle .s0 {
+      background-color: #ffffff;
+      text-align: left;
+      color: #000000;
+      font-family: docs-Calibri, Arial;
+      font-size: 11pt;
+      vertical-align: middle;
+      white-space: nowrap;
+      direction: ltr;
+      padding: 2px 3px 2px 3px;
+    }
+    .ritz .waffle .s8 {
+      border-bottom: 1px SOLID #000000;
+      border-right: 1px SOLID #000000;
+      background-color: #b3b4ae;
+      text-align: center;
+      color: #000000;
+      font-family: "Malgun Gothic";
+      font-size: 11pt;
+      vertical-align: middle;
+      white-space: nowrap;
+      direction: ltr;
+      padding: 2px 3px 2px 3px;
+    }
+    .ritz .waffle .s15 {
+      border-right: 1px SOLID #000000;
+      background-color: #b3b4ae;
+      text-align: center;
+      color: #000000;
+      font-family: "Malgun Gothic";
+      font-size: 10pt;
+      vertical-align: middle;
+      white-space: nowrap;
+      direction: ltr;
+      padding: 2px 3px 2px 3px;
+    }
+    .ritz .waffle .s5 {
+      border-bottom: 1px SOLID #000000;
+      background-color: #ffffff;
+      text-align: center;
+      font-weight: bold;
+      color: #000000;
+      font-family: "Malgun Gothic";
+      font-size: 16pt;
+      vertical-align: middle;
+      white-space: nowrap;
+      direction: ltr;
+      padding: 2px 3px 2px 3px;
+    }
+    .ritz .waffle .s3 {
+      background-color: #ffffff;
+      text-align: center;
+      color: #000000;
+      font-family: "Malgun Gothic";
+      font-size: 14pt;
+      vertical-align: middle;
+      white-space: nowrap;
+      direction: ltr;
+      padding: 2px 3px 2px 3px;
+    }
+    .ritz .waffle .s20 {
+      border-bottom: 1px SOLID #000000;
+      border-right: 1px SOLID #000000;
+      background-color: #ffffff;
+      text-align: right;
+      color: #000000;
+      font-family: "Malgun Gothic";
+      font-size: 10pt;
+      vertical-align: middle;
+      white-space: nowrap;
+      direction: ltr;
+      padding: 2px 3px 2px 3px;
+    }
+    .ritz .waffle .s2 {
+      background-color: #ffffff;
+      text-align: center;
+      font-weight: bold;
+      color: #000000;
+      font-family: "Malgun Gothic";
+      font-size: 13pt;
+      vertical-align: middle;
+      white-space: nowrap;
+      direction: ltr;
+      padding: 2px 3px 2px 3px;
+    }
+    .ritz .waffle .s6 {
+      border-bottom: 1px SOLID #000000;
+      background-color: #ffffff;
+      text-align: left;
+      color: #000000;
+      font-family: docs-Calibri, Arial;
+      font-size: 11pt;
+      vertical-align: middle;
+      white-space: nowrap;
+      direction: ltr;
+      padding: 2px 3px 2px 3px;
+    }
+    .ritz .waffle .s1 {
+      background-color: #ffffff;
+      text-align: center;
+      color: #000000;
+      font-family: "Malgun Gothic";
+      font-size: 11pt;
+      vertical-align: middle;
+      white-space: nowrap;
+      direction: ltr;
+      padding: 2px 3px 2px 3px;
+    }
+    .ritz .waffle .s18 {
+      border-bottom: 1px SOLID #000000;
+      border-right: 1px SOLID #000000;
+      background-color: #ffffff;
+      text-align: left;
+      color: #000000;
+      font-family: "Malgun Gothic";
+      font-size: 11pt;
+      vertical-align: middle;
+      white-space: nowrap;
+      direction: ltr;
+      padding: 2px 3px 2px 3px;
+    }
+    .ritz .waffle .s24 {
+      border-bottom: 1px SOLID #000000;
+      background-color: #ffffff;
+      text-align: center;
+      color: #000000;
+      font-family: docs-Calibri, Arial;
+      font-size: 11pt;
+      vertical-align: middle;
+      white-space: nowrap;
+      direction: ltr;
+      padding: 2px 3px 2px 3px;
+    }
+    .ritz .waffle .s16 {
+      background-color: #ffffff;
+      text-align: left;
+      color: #000000;
+      font-family: "Malgun Gothic";
+      font-size: 10pt;
+      vertical-align: middle;
+      white-space: nowrap;
+      direction: ltr;
+      padding: 2px 3px 2px 3px;
+    }
+    .ritz .waffle .s7 {
+      border-bottom: 1px SOLID #000000;
+      background-color: #ffffff;
+      text-align: center;
+      font-weight: bold;
+      color: #000000;
+      font-family: "Malgun Gothic";
+      font-size: 13pt;
+      vertical-align: middle;
+      white-space: nowrap;
+      direction: ltr;
+      padding: 2px 3px 2px 3px;
+    }
+    .ritz .waffle .s28 {
+      background-color: #ffffff;
+      text-align: left;
+      color: #000000;
+      font-family: "Malgun Gothic";
+      font-size: 11pt;
+      vertical-align: middle;
+      white-space: nowrap;
+      direction: ltr;
+      padding: 2px 3px 2px 3px;
+    }
+    .ritz .waffle .s21 {
+      border-bottom: 1px SOLID #000000;
+      background-color: #ffffff;
+      text-align: left;
+      color: #000000;
+      font-family: "Malgun Gothic";
+      font-size: 10pt;
+      vertical-align: middle;
+      white-space: nowrap;
+      direction: ltr;
+      padding: 2px 3px 2px 3px;
+    }
+    .ritz .waffle .s23 {
+      border-bottom: 1px SOLID #000000;
+      border-right: 1px SOLID #000000;
+      background-color: #ffffff;
+      text-align: center;
+      color: #000000;
+      font-family: Arial;
+      font-size: 10pt;
+      vertical-align: middle;
+      white-space: nowrap;
+      direction: ltr;
+      padding: 2px 3px 2px 3px;
+    }
+    .ritz .waffle .s25 {
+      border-bottom: 1px SOLID #000000;
+      background-color: #b3b4ae;
+      text-align: center;
+      color: #000000;
+      font-family: "Malgun Gothic";
+      font-size: 10pt;
+      vertical-align: middle;
+      white-space: nowrap;
+      direction: ltr;
+      padding: 2px 3px 2px 3px;
+    }
+    .ritz .waffle .s27 {
+      background-color: #ffffff;
+      text-align: left;
+      color: #000000;
+      font-family: Arial;
+      font-size: 10pt;
+      vertical-align: middle;
+      white-space: nowrap;
+      direction: ltr;
+      padding: 2px 3px 2px 3px;
+    }
+    .ritz .waffle .s19 {
+      border-bottom: 1px SOLID #000000;
+      background-color: #ffffff;
+      text-align: right;
+      color: #000000;
+      font-family: "Malgun Gothic";
+      font-size: 10pt;
+      vertical-align: middle;
+      white-space: nowrap;
+      direction: ltr;
+      padding: 2px 3px 2px 3px;
+    }
+    .ritz .waffle .s9 {
+      border-bottom: 1px SOLID #000000;
+      border-right: 1px SOLID #000000;
+      background-color: #ffffff;
+      text-align: left;
+      color: #000000;
+      font-family: docs-Calibri, Arial;
+      font-size: 11pt;
+      vertical-align: middle;
+      white-space: nowrap;
+      direction: ltr;
+      padding: 2px 3px 2px 3px;
+    }
+    .ritz .waffle .s14 {
+      border-bottom: 1px SOLID #000000;
+      border-right: 1px SOLID #000000;
+      background-color: #b3b4ae;
+      text-align: left;
+      color: #000000;
+      font-family: "Malgun Gothic";
+      font-size: 10pt;
+      vertical-align: middle;
+      white-space: nowrap;
+      direction: ltr;
+      padding: 2px 3px 2px 3px;
+    }
+    .ritz .waffle .s26 {
+      border-bottom: 1px SOLID #000000;
+      border-right: 1px SOLID #000000;
+      background-color: #ffffff;
+      text-align: center;
+      color: #000000;
+      font-family: docs-Calibri, Arial;
+      font-size: 11pt;
+      vertical-align: middle;
+      white-space: nowrap;
+      direction: ltr;
+      padding: 2px 3px 2px 3px;
+    }
+  </style>
+
+  <!-- ====== 추가 UI/선택/편집용 스타일 ====== -->
+  <style>
+    :root{
+      --blue:#1a73e8;
+      --bg:#f4f7f6;
+      --card:#ffffff;
+      --border:#d7dbe7;
+      --shadow:0 10px 28px rgba(0,0,0,0.08);
+      --sel: rgba(26,115,232,0.18);
+      --sel2: rgba(26,115,232,0.32);
+    }
+    html, body{
+      height:100%;
+      margin:0;
+      background:var(--bg);
+      font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen,Ubuntu,Cantarell,"Open Sans","Helvetica Neue",sans-serif;
+    }
+    .app{
+      height:100%;
+      display:flex;
+      flex-direction:column;
+    }
+    #topBar{
+      position:sticky;
+      top:0;
+      z-index:50;
+      background:var(--card);
+      border-bottom:1px solid var(--border);
+      box-shadow: 0 2px 12px rgba(0,0,0,0.05);
+      padding:10px 12px;
+      display:flex;
+      align-items:center;
+      gap:10px;
+      flex-wrap:wrap;
+    }
+    .btn{
+      border:1px solid var(--border);
+      background:#fff;
+      border-radius:10px;
+      padding:8px 10px;
+      cursor:pointer;
+      font-weight:600;
+    }
+    .btn:hover{ border-color:#b9c3dd; }
+    .btn.primary{
+      background:var(--blue);
+      border-color:var(--blue);
+      color:#fff;
+    }
+    .sep{ width:1px; height:26px; background:var(--border); margin:0 4px; }
+    .label{
+      font-size:12px;
+      color:#6b7280;
+      user-select:none;
+    }
+    #addrBadge{
+      font-weight:700;
+      color:#111827;
+      padding:6px 10px;
+      border-radius:10px;
+      border:1px solid var(--border);
+      background:#fff;
+      min-width:68px;
+      text-align:center;
+      user-select:none;
+    }
+    #fxInput{
+      flex:1;
+      min-width:220px;
+      border:1px solid var(--border);
+      border-radius:10px;
+      padding:9px 10px;
+      outline:none;
+      background:#fff;
+      font-size:14px;
+    }
+
+    #viewport{
+      flex:1;
+      overflow:auto;
+      padding:16px;
+    }
+
+    .sheet-frame{
+      background:#fff;
+      border:1px solid var(--border);
+      border-radius:16px;
+      box-shadow: var(--shadow);
+      padding:14px;
+      width: fit-content;
+      max-width: 100%;
+    }
+
+    /* 표 내부 텍스트 드래그(선택) 방지 */
+    .ritz .waffle, .ritz .waffle td { user-select: none; -webkit-user-select: none; }
+    /* 입력창(수정)은 예외 */
+    #cellEditor input, #fxInput { user-select: text; -webkit-user-select: text; }
+
+    /* 선택/활성 스타일 */
+    .sheet-cell{
+      position:relative;
+      cursor: cell;
+    }
+    .cell-range{
+      background: var(--sel) !important;
+    }
+    .cell-active{
+      outline: 2px solid var(--blue);
+      outline-offset: -2px;
+      z-index:2;
+    }
+    .cell-active::after{
+      content:"";
+      position:absolute;
+      right:-2px; bottom:-2px;
+      width:8px; height:8px;
+      background:var(--blue);
+      border:2px solid #fff;
+      box-sizing:border-box;
+    }
+
+    /* 편집 오버레이: 화면(뷰포트)에 고정 */
+    #cellEditor{
+      position:fixed;
+      z-index:9999;
+      display:none;
+      border:2px solid var(--blue);
+      background:#fff;
+      box-shadow: 0 12px 30px rgba(0,0,0,0.18);
+      border-radius:10px;
+      overflow:hidden;
+    }
+    #cellEditor input{
+      width:100%;
+      height:100%;
+      border:0;
+      outline:none;
+      padding:6px 8px;
+      font-size:14px;
+      font-family:inherit;
+      box-sizing:border-box;
+      background:#fff;
+    }
+
+    #statusMsg{
+      margin-left:8px;
+      font-size:12px;
+      color:#6b7280;
+      user-select:none;
+    }
+
+    /* 표 자체 간격/기본 */
+    .ritz.grid-container{ width: fit-content; }
+    table.waffle{ border-collapse: collapse; }
+  </style>
+</head>
+
+<body>
+<div class="app">
+  <div id="topBar">
+    <button type="button" class="btn primary" id="btnSave">저장(파일)</button>
+    <button type="button" class="btn" id="btnLoad">불러오기(파일)</button>
+    <button type="button" class="btn" id="btnExport">JSON</button>
+
+    <div class="sep"></div>
+
+    <span class="label">주소</span>
+    <span id="addrBadge">A1</span>
+
+    <span class="label">입력</span>
+    <input id="fxInput" type="text" placeholder="선택된 셀 값을 입력/수정 (Enter로 확정)" />
+
+    <span id="statusMsg"></span>
+    <input id="jsonImport" type="file" accept="application/json" hidden />
+  </div>
+
+  <div id="viewport">
+      <div class="ritz grid-container" dir="ltr">
+    <table class="waffle" cellspacing="0" cellpadding="0">
+        <thead>
+            <tr>
+                <th class="row-header freezebar-origin-ltr"></th>
+                <th id="0C0" style="width:80px;" class="column-headers-background">A</th>
+                <th id="0C1" style="width:34px;" class="column-headers-background">B</th>
+                <th id="0C2" style="width:40px;" class="column-headers-background">C</th>
+                <th id="0C3" style="width:41px;" class="column-headers-background">D</th>
+                <th id="0C4" style="width:36px;" class="column-headers-background">E</th>
+                <th id="0C5" style="width:16px;" class="column-headers-background">F</th>
+                <th id="0C6" style="width:32px;" class="column-headers-background">G</th>
+                <th id="0C7" style="width:29px;" class="column-headers-background">H</th>
+                <th id="0C8" style="width:31px;" class="column-headers-background">I</th>
+                <th id="0C9" style="width:48px;" class="column-headers-background">J</th>
+                <th id="0C10" style="width:9px;" class="column-headers-background">K</th>
+                <th id="0C11" style="width:44px;" class="column-headers-background">L</th>
+                <th id="0C12" style="width:25px;" class="column-headers-background">M</th>
+                <th id="0C13" style="width:80px;" class="column-headers-background">N</th>
+                <th id="0C14" style="width:80px;" class="column-headers-background">O</th>
+                <th id="0C15" style="width:55px;" class="column-headers-background">P</th>
+                <th id="0C16" style="width:19px;" class="column-headers-background">Q</th>
+                <th id="0C17" style="width:48px;" class="column-headers-background">R</th>
+                <th id="0C18" style="width:36px;" class="column-headers-background">S</th>
+                <th id="0C19" style="width:51px;" class="column-headers-background">T</th>
+                <th id="0C20" style="width:30px;" class="column-headers-background">U</th>
+                <th id="0C21" style="width:25px;" class="column-headers-background">V</th>
+                <th id="0C22" style="width:25px;" class="column-headers-background">W</th>
+                <th id="0C23" style="width:25px;" class="column-headers-background">X</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr style="height: 20px">
+                <th id="0R0" style="height: 20px;" class="row-headers-background">
+                    <div class="row-header-wrapper" style="line-height: 20px">1</div>
+                </th>
+                <td class="s0"></td>
+                <td class="s0"></td>
+                <td class="s0"></td>
+                <td class="s0"></td>
+                <td class="s1"></td>
+                <td class="s2" colspan="9">이사의 기준을 만듭니다</td>
+                <td class="s0"></td>
+                <td class="s0"></td>
+                <td class="s0"></td>
+                <td class="s0"></td>
+                <td class="s0"></td>
+                <td class="s0"></td>
+                <td class="s0"></td>
+                <td class="s0"></td>
+                <td class="s0"></td>
+                <td class="s0"></td>
+            </tr>
+            <tr style="height: 20px">
+                <th id="0R1" style="height: 20px;" class="row-headers-background">
+                    <div class="row-header-wrapper" style="line-height: 20px">2</div>
+                </th>
+                <td class="s0"></td>
+                <td class="s0"></td>
+                <td class="s0"></td>
+                <td class="s0"></td>
+                <td class="s3"></td>
+                <td class="s4" colspan="9" rowspan="2">포장이사 견적서</td>
+                <td class="s0"></td>
+                <td class="s0"></td>
+                <td class="s0"></td>
+                <td class="s0"></td>
+                <td class="s0"></td>
+                <td class="s0"></td>
+                <td class="s0"></td>
+                <td class="s0"></td>
+                <td class="s0"></td>
+                <td class="s0"></td>
+            </tr>
+            <tr style="height: 20px">
+                <th id="0R2" style="height: 20px;" class="row-headers-background">
+                    <div class="row-header-wrapper" style="line-height: 20px">3</div>
+                </th>
+                <td class="s0"></td>
+                <td class="s0"></td>
+                <td class="s0"></td>
+                <td class="s0"></td>
+                <td class="s3"></td>
+                <td class="s0"></td>
+                <td class="s0"></td>
+                <td class="s0"></td>
+                <td class="s0"></td>
+                <td class="s0"></td>
+                <td class="s5" dir="ltr" colspan="5" rowspan="2">1800-1524</td>
+            </tr>
+            <tr style="height: 20px">
+                <th id="0R3" style="height: 20px;" class="row-headers-background">
+                    <div class="row-header-wrapper" style="line-height: 20px">4</div>
+                </th>
+                <td class="s6"></td>
+                <td class="s6"></td>
+                <td class="s6"></td>
+                <td class="s6"></td>
+                <td class="s6"></td>
+                <td class="s7" colspan="9">(사업자용)</td>
+                <td class="s6"></td>
+                <td class="s6"></td>
+                <td class="s6"></td>
+                <td class="s6"></td>
+                <td class="s6"></td>
+            </tr>
+            <tr style="height: 20px">
+                <th id="0R4" style="height: 20px;" class="row-headers-background">
+                    <div class="row-header-wrapper" style="line-height: 20px">5</div>
+                </th>
+                <td class="s8">고객명</td>
+                <td class="s9" colspan="4"></td>
+                <td class="s8" colspan="3">연락처</td>
+                <td class="s10" colspan="6"></td>
+                <td class="s8" dir="ltr">견적일자</td>
+                <td class="s9" colspan="9"></td>
+            </tr>
+            <tr style="height: 20px">
+                <th id="0R5" style="height: 20px;" class="row-headers-background">
+                    <div class="row-header-wrapper" style="line-height: 20px">6</div>
+                </th>
+                <td class="s8">출발지</td>
+                <td class="s9" colspan="13"></td>
+                <td class="s8">출고일자</td>
+                <td class="s9" colspan="9"></td>
+            </tr>
+            <tr style="height: 20px">
+                <th id="0R6" style="height: 20px;" class="row-headers-background">
+                    <div class="row-header-wrapper" style="line-height: 20px">7</div>
+                </th>
+                <td class="s8">도착지</td>
+                <td class="s9" colspan="13"></td>
+                <td class="s8">입고일자</td>
+                <td class="s9" colspan="9"></td>
+            </tr>
+            <tr style="height: 20px">
+                <th id="0R7" style="height: 20px;" class="row-headers-background">
+                    <div class="row-header-wrapper" style="line-height: 20px">8</div>
+                </th>
+                <td class="s11" colspan="5">1.안방</td>
+                <td class="s11" colspan="8">2.방</td>
+                <td class="s11" colspan="4">3. 방</td>
+                <td class="s11" colspan="7">4. 방</td>
+            </tr>
+            <tr style="height: 20px">
+                <th id="0R8" style="height: 20px;" class="row-headers-background">
+                    <div class="row-header-wrapper" style="line-height: 20px">9</div>
+                </th>
+                <td class="s12">품목</td>
+                <td class="s11" colspan="2">수량</td>
+                <td class="s11" colspan="2">부피</td>
+                <td class="s12" colspan="3">품목</td>
+                <td class="s11" colspan="2">수량</td>
+                <td class="s11" colspan="3">부피</td>
+                <td class="s12">품목</td>
+                <td class="s11">수량</td>
+                <td class="s11" dir="ltr" colspan="2">부피</td>
+                <td class="s12" colspan="2">품목</td>
+                <td class="s11" colspan="2">수량</td>
+                <td class="s11" colspan="3">부피</td>
+            </tr>
+            <tr style="height: 20px">
+                <th id="0R9" style="height: 20px;" class="row-headers-background">
+                    <div class="row-header-wrapper" style="line-height: 20px">10</div>
+                </th>
+                <td class="s9">침대</td>
+                <td class="s9" colspan="2"></td>
+                <td class="s9" colspan="2"></td>
+                <td class="s13" colspan="3">침대</td>
+                <td class="s9" colspan="2"></td>
+                <td class="s9" colspan="3"></td>
+                <td class="s13">침대</td>
+                <td class="s9"></td>
+                <td class="s9" colspan="2"></td>
+                <td class="s13" colspan="2">침대</td>
+                <td class="s9" colspan="2"></td>
+                <td class="s9" colspan="3"></td>
+            </tr>
+            <tr style="height: 20px">
+                <th id="0R10" style="height: 20px;" class="row-headers-background">
+                    <div class="row-header-wrapper" style="line-height: 20px">11</div>
+                </th>
+                <td class="s13">화장대</td>
+                <td class="s9" colspan="2"></td>
+                <td class="s9" colspan="2"></td>
+                <td class="s13" colspan="3">화장대</td>
+                <td class="s9" colspan="2"></td>
+                <td class="s9" colspan="3"></td>
+                <td class="s13">화장대</td>
+                <td class="s9"></td>
+                <td class="s9" colspan="2"></td>
+                <td class="s13" colspan="2">화장대</td>
+                <td class="s9" colspan="2"></td>
+                <td class="s9" colspan="3"></td>
+            </tr>
+            <tr style="height: 20px">
+                <th id="0R11" style="height: 20px;" class="row-headers-background">
+                    <div class="row-header-wrapper" style="line-height: 20px">12</div>
+                </th>
+                <td class="s9">장롱,옷장</td>
+                <td class="s9" colspan="2"></td>
+                <td class="s9" colspan="2"></td>
+                <td class="s13" colspan="3">장롱,옷장</td>
+                <td class="s9" colspan="2"></td>
+                <td class="s9" colspan="3"></td>
+                <td class="s13">장롱,옷장</td>
+                <td class="s9"></td>
+                <td class="s9" colspan="2"></td>
+                <td class="s13" colspan="2">장롱,옷장</td>
+                <td class="s9" colspan="2"></td>
+                <td class="s9" colspan="3"></td>
+            </tr>
+            <tr style="height: 20px">
+                <th id="0R12" style="height: 20px;" class="row-headers-background">
+                    <div class="row-header-wrapper" style="line-height: 20px">13</div>
+                </th>
+                <td class="s13">서랍장</td>
+                <td class="s9" colspan="2"></td>
+                <td class="s9" colspan="2"></td>
+                <td class="s13" colspan="3">서랍장</td>
+                <td class="s9" colspan="2"></td>
+                <td class="s9" colspan="3"></td>
+                <td class="s13">서랍장</td>
+                <td class="s9"></td>
+                <td class="s9" colspan="2"></td>
+                <td class="s13" colspan="2">서랍장</td>
+                <td class="s9" colspan="2"></td>
+                <td class="s9" colspan="3"></td>
+            </tr>
+            <tr style="height: 20px">
+                <th id="0R13" style="height: 20px;" class="row-headers-background">
+                    <div class="row-header-wrapper" style="line-height: 20px">14</div>
+                </th>
+                <td class="s13">수납장</td>
+                <td class="s9" colspan="2"></td>
+                <td class="s9" colspan="2"></td>
+                <td class="s13" colspan="3">수납장</td>
+                <td class="s9" colspan="2"></td>
+                <td class="s9" colspan="3"></td>
+                <td class="s13">수납장</td>
+                <td class="s9"></td>
+                <td class="s9" colspan="2"></td>
+                <td class="s13" colspan="2">수납장</td>
+                <td class="s9" colspan="2"></td>
+                <td class="s9" colspan="3"></td>
+            </tr>
+            <tr style="height: 20px">
+                <th id="0R14" style="height: 20px;" class="row-headers-background">
+                    <div class="row-header-wrapper" style="line-height: 20px">15</div>
+                </th>
+                <td class="s13">TV,PC</td>
+                <td class="s9" colspan="2"></td>
+                <td class="s9" colspan="2"></td>
+                <td class="s13" colspan="3">TV,PC</td>
+                <td class="s9" colspan="2"></td>
+                <td class="s9" colspan="3"></td>
+                <td class="s13">TV,PC</td>
+                <td class="s9"></td>
+                <td class="s9" colspan="2"></td>
+                <td class="s13" colspan="2">TV,PC</td>
+                <td class="s9" colspan="2"></td>
+                <td class="s9" colspan="3"></td>
+            </tr>
+            <tr style="height: 20px">
+                <th id="0R15" style="height: 20px;" class="row-headers-background">
+                    <div class="row-header-wrapper" style="line-height: 20px">16</div>
+                </th>
+                <td class="s13">TV받침대</td>
+                <td class="s9" colspan="2"></td>
+                <td class="s9" colspan="2"></td>
+                <td class="s13" colspan="3">TV받침대</td>
+                <td class="s9" colspan="2"></td>
+                <td class="s9" colspan="3"></td>
+                <td class="s13">TV받침대</td>
+                <td class="s9"></td>
+                <td class="s9" colspan="2"></td>
+                <td class="s13" colspan="2">TV받침대</td>
+                <td class="s9" colspan="2"></td>
+                <td class="s9" colspan="3"></td>
+            </tr>
+            <tr style="height: 20px">
+                <th id="0R16" style="height: 20px;" class="row-headers-background">
+                    <div class="row-header-wrapper" style="line-height: 20px">17</div>
+                </th>
+                <td class="s13">책상,의자</td>
+                <td class="s9" colspan="2"></td>
+                <td class="s9" colspan="2"></td>
+                <td class="s13" colspan="3">책상,의자</td>
+                <td class="s9" colspan="2"></td>
+                <td class="s9" colspan="3"></td>
+                <td class="s13">책상,의자</td>
+                <td class="s9"></td>
+                <td class="s9" colspan="2"></td>
+                <td class="s13" colspan="2">책상,의자</td>
+                <td class="s9" colspan="2"></td>
+                <td class="s9" colspan="3"></td>
+            </tr>
+            <tr style="height: 20px">
+                <th id="0R17" style="height: 20px;" class="row-headers-background">
+                    <div class="row-header-wrapper" style="line-height: 20px">18</div>
+                </th>
+                <td class="s13">테이블</td>
+                <td class="s9" colspan="2"></td>
+                <td class="s9" colspan="2"></td>
+                <td class="s13" colspan="3">테이블</td>
+                <td class="s9" colspan="2"></td>
+                <td class="s9" colspan="3"></td>
+                <td class="s13">테이블</td>
+                <td class="s9"></td>
+                <td class="s9" colspan="2"></td>
+                <td class="s13" colspan="2">테이블</td>
+                <td class="s9" colspan="2"></td>
+                <td class="s9" colspan="3"></td>
+            </tr>
+            <tr style="height: 20px">
+                <th id="0R18" style="height: 20px;" class="row-headers-background">
+                    <div class="row-header-wrapper" style="line-height: 20px">19</div>
+                </th>
+                <td class="s13">책장</td>
+                <td class="s9" colspan="2"></td>
+                <td class="s9" colspan="2"></td>
+                <td class="s13" colspan="3">책장</td>
+                <td class="s9" colspan="2"></td>
+                <td class="s9" colspan="3"></td>
+                <td class="s13">책장</td>
+                <td class="s9"></td>
+                <td class="s9" colspan="2"></td>
+                <td class="s13" colspan="2">책장</td>
+                <td class="s9" colspan="2"></td>
+                <td class="s9" colspan="3"></td>
+            </tr>
+            <tr style="height: 20px">
+                <th id="0R19" style="height: 20px;" class="row-headers-background">
+                    <div class="row-header-wrapper" style="line-height: 20px">20</div>
+                </th>
+                <td class="s13">책박스</td>
+                <td class="s9" colspan="2"></td>
+                <td class="s9" colspan="2"></td>
+                <td class="s13" colspan="3">책박스</td>
+                <td class="s9" colspan="2"></td>
+                <td class="s9" colspan="3"></td>
+                <td class="s13">책박스</td>
+                <td class="s9"></td>
+                <td class="s9" colspan="2"></td>
+                <td class="s13" colspan="2">책박스</td>
+                <td class="s9" colspan="2"></td>
+                <td class="s9" colspan="3"></td>
+            </tr>
+            <tr style="height: 20px">
+                <th id="0R20" style="height: 20px;" class="row-headers-background">
+                    <div class="row-header-wrapper" style="line-height: 20px">21</div>
+                </th>
+                <td class="s13">중박스</td>
+                <td class="s9" colspan="2"></td>
+                <td class="s9" colspan="2"></td>
+                <td class="s13" colspan="3">중박스</td>
+                <td class="s9" colspan="2"></td>
+                <td class="s9" colspan="3"></td>
+                <td class="s13">중박스</td>
+                <td class="s9"></td>
+                <td class="s9" colspan="2"></td>
+                <td class="s13" colspan="2">중박스</td>
+                <td class="s9" colspan="2"></td>
+                <td class="s9" colspan="3"></td>
+            </tr>
+            <tr style="height: 20px">
+                <th id="0R21" style="height: 20px;" class="row-headers-background">
+                    <div class="row-header-wrapper" style="line-height: 20px">22</div>
+                </th>
+                <td class="s13">옷박스</td>
+                <td class="s9" colspan="2"></td>
+                <td class="s9" colspan="2"></td>
+                <td class="s13" colspan="3">옷박스</td>
+                <td class="s9" colspan="2"></td>
+                <td class="s9" colspan="3"></td>
+                <td class="s13">옷박스</td>
+                <td class="s9"></td>
+                <td class="s9" colspan="2"></td>
+                <td class="s13" colspan="2">옷박스</td>
+                <td class="s9" colspan="2"></td>
+                <td class="s9" colspan="3"></td>
+            </tr>
+            <tr style="height: 20px">
+                <th id="0R22" style="height: 20px;" class="row-headers-background">
+                    <div class="row-header-wrapper" style="line-height: 20px">23</div>
+                </th>
+                <td class="s9"></td>
+                <td class="s9" colspan="2"></td>
+                <td class="s9" colspan="2"></td>
+                <td class="s9" colspan="3"></td>
+                <td class="s9" colspan="2"></td>
+                <td class="s9" colspan="3"></td>
+                <td class="s9"></td>
+                <td class="s9"></td>
+                <td class="s9" colspan="2"></td>
+                <td class="s9" colspan="2"></td>
+                <td class="s9" colspan="2"></td>
+                <td class="s9" colspan="3"></td>
+            </tr>
+            <tr style="height: 20px">
+                <th id="0R23" style="height: 20px;" class="row-headers-background">
+                    <div class="row-header-wrapper" style="line-height: 20px">24</div>
+                </th>
+                <td class="s14">소계(cbm)</td>
+                <td class="s9" colspan="4"></td>
+                <td class="s11" colspan="3">소계(cbm)</td>
+                <td class="s9" colspan="5"></td>
+                <td class="s11">소계(cbm)</td>
+                <td class="s9" colspan="3"></td>
+                <td class="s11" colspan="2">소계(cbm)</td>
+                <td class="s9" colspan="5"></td>
+            </tr>
+            <tr style="height: 9px">
+                <th id="0R24" style="height: 9px;" class="row-headers-background">
+                    <div class="row-header-wrapper" style="line-height: 9px">25</div>
+                </th>
+                <td class="s6" colspan="24"></td>
+            </tr>
+            <tr style="height: 20px">
+                <th id="0R25" style="height: 20px;" class="row-headers-background">
+                    <div class="row-header-wrapper" style="line-height: 20px">26</div>
+                </th>
+                <td class="s11" colspan="5">5.거실</td>
+                <td class="s11" colspan="8">6.주방/베란다</td>
+                <td class="s15" colspan="11">7.기타사항</td>
+            </tr>
+            <tr style="height: 20px">
+                <th id="0R26" style="height: 20px;" class="row-headers-background">
+                    <div class="row-header-wrapper" style="line-height: 20px">27</div>
+                </th>
+                <td class="s12">품목</td>
+                <td class="s11" colspan="2">수량</td>
+                <td class="s11" colspan="2">부피</td>
+                <td class="s12" colspan="3">품목</td>
+                <td class="s11" colspan="2">수량</td>
+                <td class="s11" colspan="3">부피</td>
+                <td class="s16" colspan="4">* 오전 8시~8시30분 도착 예정</td>
+                <td class="s17" colspan="7"></td>
+            </tr>
+            <tr style="height: 20px">
+                <th id="0R27" style="height: 20px;" class="row-headers-background">
+                    <div class="row-header-wrapper" style="line-height: 20px">28</div>
+                </th>
+                <td class="s13">쇼파</td>
+                <td class="s9" colspan="2"></td>
+                <td class="s9" colspan="2"></td>
+                <td class="s13" colspan="3">식탁</td>
+                <td class="s9" colspan="2"></td>
+                <td class="s9" colspan="3"></td>
+                <td class="s16" colspan="4">* 쓰레기봉투 50L(2~4장) 준비</td>
+                <td class="s17" colspan="7"></td>
+            </tr>
+            <tr style="height: 20px">
+                <th id="0R28" style="height: 20px;" class="row-headers-background">
+                    <div class="row-header-wrapper" style="line-height: 20px">29</div>
+                </th>
+                <td class="s13">의자</td>
+                <td class="s9" colspan="2"></td>
+                <td class="s9" colspan="2"></td>
+                <td class="s13" colspan="3">의자</td>
+                <td class="s9" colspan="2"></td>
+                <td class="s9" colspan="3"></td>
+                <td class="s16" colspan="4">* 고가물품 고지 및 귀중품은 고객관리</td>
+                <td class="s17" colspan="7"></td>
+            </tr>
+            <tr style="height: 20px">
+                <th id="0R29" style="height: 20px;" class="row-headers-background">
+                    <div class="row-header-wrapper" style="line-height: 20px">30</div>
+                </th>
+                <td class="s13">수납장</td>
+                <td class="s9" colspan="2"></td>
+                <td class="s9" colspan="2"></td>
+                <td class="s13" colspan="3">냉장고(2D,4D)</td>
+                <td class="s9" colspan="2"></td>
+                <td class="s9" colspan="3"></td>
+                <td class="s16" colspan="2">* 에어컨 설치 비용 별도</td>
+                <td class="s17" colspan="9"></td>
+            </tr>
+            <tr style="height: 20px">
+                <th id="0R30" style="height: 20px;" class="row-headers-background">
+                    <div class="row-header-wrapper" style="line-height: 20px">31</div>
+                </th>
+                <td class="s13">장식장</td>
+                <td class="s9" colspan="2"></td>
+                <td class="s9" colspan="2"></td>
+                <td class="s13" colspan="3">김치냉장고(소)</td>
+                <td class="s9" colspan="2"></td>
+                <td class="s9" colspan="3"></td>
+                <td class="s9" colspan="11" rowspan="17"></td>
+            </tr>
+            <tr style="height: 20px">
+                <th id="0R31" style="height: 20px;" class="row-headers-background">
+                    <div class="row-header-wrapper" style="line-height: 20px">32</div>
+                </th>
+                <td class="s13">책장</td>
+                <td class="s9" colspan="2"></td>
+                <td class="s9" colspan="2"></td>
+                <td class="s13" colspan="3">김치냉장고(대)</td>
+                <td class="s9" colspan="2"></td>
+                <td class="s9" colspan="3"></td>
+            </tr>
+            <tr style="height: 20px">
+                <th id="0R32" style="height: 20px;" class="row-headers-background">
+                    <div class="row-header-wrapper" style="line-height: 20px">33</div>
+                </th>
+                <td class="s13">책상,의자</td>
+                <td class="s9" colspan="2"></td>
+                <td class="s9" colspan="2"></td>
+                <td class="s13" colspan="3">정수기</td>
+                <td class="s9" colspan="2"></td>
+                <td class="s9" colspan="3"></td>
+            </tr>
+            <tr style="height: 20px">
+                <th id="0R33" style="height: 20px;" class="row-headers-background">
+                    <div class="row-header-wrapper" style="line-height: 20px">34</div>
+                </th>
+                <td class="s13">테이블</td>
+                <td class="s9" colspan="2"></td>
+                <td class="s9" colspan="2"></td>
+                <td class="s13" colspan="3">진열장</td>
+                <td class="s9" colspan="2"></td>
+                <td class="s9" colspan="3"></td>
+            </tr>
+            <tr style="height: 20px">
+                <th id="0R34" style="height: 20px;" class="row-headers-background">
+                    <div class="row-header-wrapper" style="line-height: 20px">35</div>
+                </th>
+                <td class="s13">스타일러</td>
+                <td class="s9" colspan="2"></td>
+                <td class="s9" colspan="2"></td>
+                <td class="s13" colspan="3">수납장</td>
+                <td class="s9" colspan="2"></td>
+                <td class="s9" colspan="3"></td>
+            </tr>
+            <tr style="height: 20px">
+                <th id="0R35" style="height: 20px;" class="row-headers-background">
+                    <div class="row-header-wrapper" style="line-height: 20px">36</div>
+                </th>
+                <td class="s13">TV</td>
+                <td class="s9" colspan="2"></td>
+                <td class="s9" colspan="2"></td>
+                <td class="s13" colspan="3">중박스</td>
+                <td class="s9" colspan="2"></td>
+                <td class="s9" colspan="3"></td>
+            </tr>
+            <tr style="height: 20px">
+                <th id="0R36" style="height: 20px;" class="row-headers-background">
+                    <div class="row-header-wrapper" style="line-height: 20px">37</div>
+                </th>
+                <td class="s13">TV받침대</td>
+                <td class="s9" colspan="2"></td>
+                <td class="s9" colspan="2"></td>
+                <td class="s13" colspan="3">바구니</td>
+                <td class="s9" colspan="2"></td>
+                <td class="s9" colspan="3"></td>
+            </tr>
+            <tr style="height: 20px">
+                <th id="0R37" style="height: 20px;" class="row-headers-background">
+                    <div class="row-header-wrapper" style="line-height: 20px">38</div>
+                </th>
+                <td class="s13">에어컨</td>
+                <td class="s9" colspan="2"></td>
+                <td class="s9" colspan="2"></td>
+                <td class="s13" colspan="3">유리그릇</td>
+                <td class="s9" colspan="2"></td>
+                <td class="s9" colspan="3"></td>
+            </tr>
+            <tr style="height: 20px">
+                <th id="0R38" style="height: 20px;" class="row-headers-background">
+                    <div class="row-header-wrapper" style="line-height: 20px">39</div>
+                </th>
+                <td class="s13">피아노</td>
+                <td class="s9" colspan="2"></td>
+                <td class="s9" colspan="2"></td>
+                <td class="s13" colspan="3">세탁기</td>
+                <td class="s9" colspan="2"></td>
+                <td class="s9" colspan="3"></td>
+            </tr>
+            <tr style="height: 20px">
+                <th id="0R39" style="height: 20px;" class="row-headers-background">
+                    <div class="row-header-wrapper" style="line-height: 20px">40</div>
+                </th>
+                <td class="s13">서랍장</td>
+                <td class="s9" colspan="2"></td>
+                <td class="s9" colspan="2"></td>
+                <td class="s13" colspan="3">건조기</td>
+                <td class="s9" colspan="2"></td>
+                <td class="s9" colspan="3"></td>
+            </tr>
+            <tr style="height: 20px">
+                <th id="0R40" style="height: 20px;" class="row-headers-background">
+                    <div class="row-header-wrapper" style="line-height: 20px">41</div>
+                </th>
+                <td class="s13">운동기구</td>
+                <td class="s9" colspan="2"></td>
+                <td class="s9" colspan="2"></td>
+                <td class="s13" colspan="3">화분,장독</td>
+                <td class="s9" colspan="2"></td>
+                <td class="s9" colspan="3"></td>
+            </tr>
+            <tr style="height: 20px">
+                <th id="0R41" style="height: 20px;" class="row-headers-background">
+                    <div class="row-header-wrapper" style="line-height: 20px">42</div>
+                </th>
+                <td class="s13">안마의자</td>
+                <td class="s9" colspan="2"></td>
+                <td class="s9" colspan="2"></td>
+                <td class="s13" colspan="3">캐리어등</td>
+                <td class="s9" colspan="2"></td>
+                <td class="s9" colspan="3"></td>
+            </tr>
+            <tr style="height: 20px">
+                <th id="0R42" style="height: 20px;" class="row-headers-background">
+                    <div class="row-header-wrapper" style="line-height: 20px">43</div>
+                </th>
+                <td class="s13">장난감</td>
+                <td class="s9" colspan="2"></td>
+                <td class="s9" colspan="2"></td>
+                <td class="s13" colspan="3">자전거</td>
+                <td class="s9" colspan="2"></td>
+                <td class="s9" colspan="3"></td>
+            </tr>
+            <tr style="height: 20px">
+                <th id="0R43" style="height: 20px;" class="row-headers-background">
+                    <div class="row-header-wrapper" style="line-height: 20px">44</div>
+                </th>
+                <td class="s13">책박스</td>
+                <td class="s9" colspan="2"></td>
+                <td class="s9" colspan="2"></td>
+                <td class="s13" colspan="3">공기청정기</td>
+                <td class="s9" colspan="2"></td>
+                <td class="s9" colspan="3"></td>
+            </tr>
+            <tr style="height: 20px">
+                <th id="0R44" style="height: 20px;" class="row-headers-background">
+                    <div class="row-header-wrapper" style="line-height: 20px">45</div>
+                </th>
+                <td class="s13">중박스</td>
+                <td class="s9" colspan="2"></td>
+                <td class="s9" colspan="2"></td>
+                <td class="s18" colspan="3">충격흡수판</td>
+                <td class="s9" colspan="2"></td>
+                <td class="s9" colspan="3"></td>
+            </tr>
+            <tr style="height: 20px">
+                <th id="0R45" style="height: 20px;" class="row-headers-background">
+                    <div class="row-header-wrapper" style="line-height: 20px">46</div>
+                </th>
+                <td class="s13">대박스</td>
+                <td class="s9" colspan="2"></td>
+                <td class="s9" colspan="2"></td>
+                <td class="s9" colspan="3"></td>
+                <td class="s9" colspan="2"></td>
+                <td class="s9" colspan="3"></td>
+            </tr>
+            <tr style="height: 20px">
+                <th id="0R46" style="height: 20px;" class="row-headers-background">
+                    <div class="row-header-wrapper" style="line-height: 20px">47</div>
+                </th>
+                <td class="s14">소계(cbm)</td>
+                <td class="s9" colspan="4"></td>
+                <td class="s11" colspan="3">소계(cbm)</td>
+                <td class="s9" colspan="5"></td>
+            </tr>
+            <tr style="height: 9px">
+                <th id="0R47" style="height: 9px;" class="row-headers-background">
+                    <div class="row-header-wrapper" style="line-height: 9px">48</div>
+                </th>
+                <td class="s6" colspan="24"></td>
+            </tr>
+            <tr style="height: 20px">
+                <th id="0R48" style="height: 20px;" class="row-headers-background">
+                    <div class="row-header-wrapper" style="line-height: 20px">49</div>
+                </th>
+                <td class="s11">이사비용</td>
+                <td class="s9" colspan="3"></td>
+                <td class="s11" colspan="4">사다리차(합계)</td>
+                <td class="s9" colspan="5"></td>
+                <td class="s11">붙박이장</td>
+                <td class="s9" colspan="3"></td>
+                <td class="s11" colspan="2">피아노</td>
+                <td class="s9" colspan="5"></td>
+            </tr>
+            <tr style="height: 20px">
+                <th id="0R49" style="height: 20px;" class="row-headers-background">
+                    <div class="row-header-wrapper" style="line-height: 20px">50</div>
+                </th>
+                <td class="s11">남자</td>
+                <td class="s19" colspan="2"></td>
+                <td class="s20" dir="ltr">명</td>
+                <td class="s11" colspan="4">출발지( 층)</td>
+                <td class="s9" colspan="5"></td>
+                <td class="s11">시스템장</td>
+                <td class="s9" colspan="3"></td>
+                <td class="s11" colspan="2">도배대기</td>
+                <td class="s9" colspan="5"></td>
+            </tr>
+            <tr style="height: 20px">
+                <th id="0R50" style="height: 20px;" class="row-headers-background">
+                    <div class="row-header-wrapper" style="line-height: 20px">51</div>
+                </th>
+                <td class="s11">여자</td>
+                <td class="s19" colspan="2"></td>
+                <td class="s20" dir="ltr">명</td>
+                <td class="s11" colspan="4">도착지( 층)</td>
+                <td class="s9" colspan="5"></td>
+                <td class="s11">돌(흙)침대</td>
+                <td class="s9" colspan="3"></td>
+                <td class="s11" colspan="2">금고</td>
+                <td class="s9" colspan="5"></td>
+            </tr>
+            <tr style="height: 9px">
+                <th id="0R51" style="height: 9px;" class="row-headers-background">
+                    <div class="row-header-wrapper" style="line-height: 9px">52</div>
+                </th>
+                <td class="s6" colspan="24"></td>
+            </tr>
+            <tr style="height: 27px">
+                <th id="0R52" style="height: 27px;" class="row-headers-background">
+                    <div class="row-header-wrapper" style="line-height: 27px">53</div>
+                </th>
+                <td class="s11">물량합계</td>
+                <td class="s19" dir="ltr" colspan="6"></td>
+                <td class="s20" dir="ltr" colspan="2">CBM</td>
+                <td class="s6" dir="ltr" colspan="5"> </td>
+                <td class="s20" dir="ltr">톤 </td>
+                <td class="s19" dir="ltr" colspan="8"></td>
+                <td class="s20" dir="ltr">대 </td>
+            </tr>
+            <tr style="height: 27px">
+                <th id="0R53" style="height: 27px;" class="row-headers-background">
+                    <div class="row-header-wrapper" style="line-height: 27px">54</div>
+                </th>
+                <td class="s11">견적금액</td>
+                <td class="s21" dir="ltr">\</td>
+                <td class="s13" colspan="7"></td>
+                <td class="s11" dir="ltr" colspan="2">계 약 금</td>
+                <td class="s20" dir="ltr" colspan="4"></td>
+                <td class="s11" dir="ltr">잔 금</td>
+                <td class="s12" dir="ltr" colspan="8"></td>
+            </tr>
+            <tr style="height: 27px">
+                <th id="0R54" style="height: 27px;" class="row-headers-background">
+                    <div class="row-header-wrapper" style="line-height: 27px">55</div>
+                </th>
+                <td class="s11">입금여부</td>
+                <td class="s21" dir="ltr">현금</td>
+                <td class="s21" dir="ltr" colspan="7"></td>
+                <td class="s21" dir="ltr" colspan="6">원 (수령, 계좌입금)을 확인함 (송금 및 입금일자:</td>
+                <td class="s21" colspan="2"></td>
+                <td class="s21" dir="ltr">년</td>
+                <td class="s21" colspan="2"></td>
+                <td class="s21" dir="ltr">월</td>
+                <td class="s21" dir="ltr" colspan="2"></td>
+                <td class="s13" dir="ltr">일)</td>
+            </tr>
+            <tr style="height: 27px">
+                <th id="0R55" style="height: 27px;" class="row-headers-background">
+                    <div class="row-header-wrapper" style="line-height: 27px">56</div>
+                </th>
+                <td class="s11">작 업 자</td>
+                <td class="s6" colspan="3"></td>
+                <td class="s22" dir="ltr" colspan="3">(연락처 :</td>
+                <td class="s22" dir="ltr" colspan="5"></td>
+                <td class="s23">)</td>
+                <td class="s11" dir="ltr">견 적 자</td>
+                <td class="s6" colspan="3"></td>
+                <td class="s22" dir="ltr" colspan="2">(연락처 :</td>
+                <td class="s6" colspan="4"></td>
+                <td class="s23">)</td>
+            </tr>
+            <tr style="height: 27px">
+                <th id="0R56" style="height: 27px;" class="row-headers-background">
+                    <div class="row-header-wrapper" style="line-height: 27px">57</div>
+                </th>
+                <td class="s11">은 행 명</td>
+                <td class="s24" colspan="6"></td>
+                <td class="s25" dir="ltr" colspan="2">계좌번호</td>
+                <td class="s12" dir="ltr" colspan="8"></td>
+                <td class="s11" colspan="2">예금주</td>
+                <td class="s26" colspan="5"></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+    </div>
+  </div>
+</div>
+
+<!-- 셀 편집 오버레이 -->
+<div id="cellEditor"><input id="cellEditorInput" type="text" /></div>
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const viewport = document.getElementById('viewport');
+  const addrBadge = document.getElementById('addrBadge');
+  const fxInput = document.getElementById('fxInput');
+
+  const editor = document.getElementById('cellEditor');
+  const editorInput = document.getElementById('cellEditorInput');
+
+  const btnSave = document.getElementById('btnSave');
+  const btnLoad = document.getElementById('btnLoad');
+  const btnExport = document.getElementById('btnExport');
+
+  const statusMsg = document.getElementById('statusMsg');
+  const jsonImport = document.getElementById('jsonImport');
+
+  const table = viewport.querySelector('.ritz table.waffle');
+  if (!table) {
+    alert("table.waffle 을 찾지 못했어. 표가 viewport 안에 있는지 확인해줘.");
+    return;
+  }
+
+  const tbody = table.tBodies[0];
+  const trList = Array.from(tbody.rows);
+
+  // ===== Grid build (merged 지원) =====
+  const grid = [];
+  const masters = [];
+
+  function buildGrid(){
+    grid.length = 0;
+    masters.length = 0;
+    const occupied = [];
+
+    for (let r=0; r<trList.length; r++){
+      const tr = trList[r];
+      const tds = Array.from(tr.cells).filter(el => el.tagName === 'TD');
+      grid[r] = grid[r] || [];
+      occupied[r] = occupied[r] || [];
+
+      let c = 0;
+      for (const td of tds){
+        while (occupied[r][c]) c++;
+
+        const cs = parseInt(td.getAttribute('colspan') || "1", 10);
+        const rs = parseInt(td.getAttribute('rowspan') || "1", 10);
+
+        const meta = { el: td, mr: r, mc: c, rs, cs };
+
+        td.classList.add('sheet-cell');
+        td.dataset.mr = String(r);
+        td.dataset.mc = String(c);
+        td.dataset.rs = String(rs);
+        td.dataset.cs = String(cs);
+
+        masters.push(meta);
+
+        for (let rr=r; rr<r+rs; rr++){
+          grid[rr] = grid[rr] || [];
+          occupied[rr] = occupied[rr] || [];
+          for (let cc=c; cc<c+cs; cc++){
+            grid[rr][cc] = meta;
+            occupied[rr][cc] = true;
+          }
+        }
+        c += cs;
+      }
+    }
+  }
+  buildGrid();
+
+  function colToName(n){
+    let s = "";
+    let x = n + 1;
+    while (x > 0){
+      const m = (x - 1) % 26;
+      s = String.fromCharCode(65 + m) + s;
+      x = Math.floor((x - 1) / 26);
+    }
+    return s;
+  }
+  function rowLabel(r){
+    const th = trList[r]?.querySelector('th .row-header-wrapper');
+    const v = th ? th.textContent.trim() : String(r+1);
+    return v || String(r+1);
+  }
+  function addrOf(meta){
+    return `${colToName(meta.mc)}${rowLabel(meta.mr)}`;
+  }
+
+  function toast(msg, ok=true){
+    if(!statusMsg) return;
+    statusMsg.textContent = msg;
+    statusMsg.style.color = ok ? "#166534" : "#b91c1c";
+    clearTimeout(toast._t);
+    toast._t = setTimeout(()=>{
+      statusMsg.textContent = "";
+      statusMsg.style.color = "#6b7280";
+    }, 2500);
+  }
+
+  function ensureVisible(el){
+    const vpRect = viewport.getBoundingClientRect();
+    const r = el.getBoundingClientRect();
+    const pad = 16;
+
+    if (r.top < vpRect.top + pad) viewport.scrollTop -= (vpRect.top + pad - r.top);
+    if (r.bottom > vpRect.bottom - pad) viewport.scrollTop += (r.bottom - (vpRect.bottom - pad));
+    if (r.left < vpRect.left + pad) viewport.scrollLeft -= (vpRect.left + pad - r.left);
+    if (r.right > vpRect.right - pad) viewport.scrollLeft += (r.right - (vpRect.right - pad));
+  }
+
+  // ===== Selection model =====
+  let active = null;
+  let anchor = null;
+  let selected = new Set(); // "mr:mc"
+
+  function keyOf(m){ return `${m.mr}:${m.mc}`; }
+
+  // =========================================================
+  // Parent iframe 연동(표 연동) - postMessage
+  // =========================================================
+  const EMBEDDED = (window.parent && window.parent !== window);
+  let suppressOutbound = false;
+  let lastSentSig = "";
+
+  function emitSelection(){
+    if(!EMBEDDED || suppressOutbound) return;
+    if(!active) return;
+    const addr = addrOf(active);
+    const isSel = selected.has(keyOf(active));
+    const sig = addr + "|" + (isSel ? "1" : "0");
+    if(sig === lastSentSig) return;
+    lastSentSig = sig;
+    window.parent.postMessage({ type:'sheet:cell', addr, selected:isSel }, '*');
+  }
+
+  function addrToRC(addr){
+    const m = String(addr||"").trim().match(/^([A-Za-z]+)(\d+)$/);
+    if(!m) return null;
+    const letters = m[1].toUpperCase();
+    const row = parseInt(m[2],10);
+    if(!Number.isFinite(row) || row < 1) return null;
+
+    let col = 0;
+    for(const ch of letters){
+      const v = ch.charCodeAt(0) - 64; // A=1
+      if(v < 1 || v > 26) return null;
+      col = col*26 + v;
+    }
+    col = col - 1; // 0-based
+    return { r: row-1, c: col };
+  }
+
+  function getMasterAt(r,c){
+    const m = grid?.[r]?.[c];
+    if(!m) return null;
+    const mr = m.mr, mc = m.mc;
+    return grid?.[mr]?.[mc] || m;
+  }
+
+  function setSelectionFromParent(addr, on){
+    const rc = addrToRC(addr);
+    if(!rc) return;
+
+    const meta = getMasterAt(rc.r, rc.c);
+    if(!meta) return;
+
+    const k = keyOf(meta);
+
+    if(on){
+      selected.add(k);
+      active = meta;
+      if(!anchor) anchor = meta;
+    }else{
+      selected.delete(k);
+      if(active && keyOf(active) === k){
+        // 남아있는 선택 중 하나를 active로
+        const it = selected.values().next();
+        if(!it.done){
+          const [mr,mc] = String(it.value).split(":").map(v=>parseInt(v,10));
+          active = getMasterAt(mr,mc) || active;
+        }
+      }
+      if(selected.size === 0){
+        // 완전 비우지는 않음: 최소 1개는 유지(기본 동작)
+        selected.add(k);
+        active = meta;
+      }
+    }
+    refreshUI();
+  }
+
+  window.addEventListener('message', (ev)=>{
+    const msg = ev.data;
+    if(!msg || typeof msg !== 'object') return;
+
+    if(msg.type === 'parent:hello'){
+      if(EMBEDDED){
+        window.parent.postMessage({ type:'sheet:ready' }, '*');
+      }
+      return;
+    }
+
+    if(msg.type === 'parent:setSelection'){
+      suppressOutbound = true;
+      try{
+        setSelectionFromParent(msg.addr, !!msg.selected);
+      }finally{
+        // 다음 프레임부터 다시 outbound 허용
+        requestAnimationFrame(()=>{ suppressOutbound = false; });
+      }
+      return;
+    }
+  });
+
+
+  function mastersInRect(r1,c1,r2,c2){
+    const minR = Math.min(r1,r2), maxR = Math.max(r1,r2);
+    const minC = Math.min(c1,c2), maxC = Math.max(c1,c2);
+    const set = new Set();
+    for (let r=minR; r<=maxR; r++){
+      for (let c=minC; c<=maxC; c++){
+        const m = grid[r]?.[c];
+        if (!m) continue;
+        set.add(keyOf(m));
+      }
+    }
+    return set;
+  }
+
+  function refreshUI(){
+    for (const m of masters){
+      const k = keyOf(m);
+      m.el.classList.toggle('cell-range', selected.has(k));
+      m.el.classList.toggle('cell-active', active && keyOf(active) === k);
+    }
+    syncFx();
+    if (active) ensureVisible(active.el);
+    if (editing && active) placeEditorOn(active);
+    emitSelection();
+  }
+
+  function setSingle(meta){
+    hideEditor(true);
+    active = meta;
+    anchor = meta;
+    selected = new Set([keyOf(meta)]);
+    refreshUI();
+  }
+
+  function applyShiftRange(meta){
+    hideEditor(true);
+    if (!anchor) anchor = active || meta;
+    active = meta;
+    selected = mastersInRect(anchor.mr, anchor.mc, meta.mr, meta.mc);
+    selected.add(keyOf(meta));
+    refreshUI();
+  }
+
+  function toggleCell(meta){
+    hideEditor(true);
+    const k = keyOf(meta);
+    if (selected.has(k)) selected.delete(k);
+    else selected.add(k);
+    active = meta;
+    if (!anchor) anchor = meta;
+    if (selected.size === 0) selected.add(k);
+    refreshUI();
+  }
+
+  function toggleRange(meta){
+    hideEditor(true);
+    if (!anchor) anchor = active || meta;
+    const rect = mastersInRect(anchor.mr, anchor.mc, meta.mr, meta.mc);
+    let allSelected = true;
+    for (const k of rect){ if(!selected.has(k)){ allSelected=false; break; } }
+    for (const k of rect){
+      if (allSelected) selected.delete(k);
+      else selected.add(k);
+    }
+    active = meta;
+    if (selected.size === 0) selected.add(keyOf(meta));
+    refreshUI();
+  }
+
+  function getMetaFromTD(td){
+    const mr = parseInt(td.dataset.mr || "0", 10);
+    const mc = parseInt(td.dataset.mc || "0", 10);
+    return grid[mr]?.[mc] || null;
+  }
+
+  // ===== Editor (undefined 버그 해결 포함) =====
+  let editing = false;
+  let editOriginal = "";
+
+  function placeEditorOn(meta){
+    const rect = meta.el.getBoundingClientRect();
+    editor.style.left = rect.left + "px";
+    editor.style.top  = rect.top  + "px";
+    editor.style.width  = rect.width + "px";
+    editor.style.height = rect.height + "px";
+  }
+
+  function showEditor(meta, opts){
+    if (!meta) return;
+    opts = opts || {};
+    const selectAll = (opts.selectAll !== false);
+
+    // ✅ seedText undefined/null이면 “없음” 처리
+    const hasSeed = (opts.seedText !== undefined && opts.seedText !== null);
+
+    editing = true;
+    placeEditorOn(meta);
+    editor.style.display = "block";
+
+    const current = (meta.el.textContent ?? "");
+    const v = hasSeed ? String(opts.seedText) : current;
+
+    editorInput.value = v;
+    editOriginal = current;
+
+    editorInput.focus();
+    if (selectAll) editorInput.select();
+    else editorInput.setSelectionRange(editorInput.value.length, editorInput.value.length);
+  }
+
+  function commitEditor(){
+    if (!editing || !active) return;
+    active.el.textContent = editorInput.value;
+    editor.style.display = "none";
+    editing = false;
+    syncFx();
+    refreshUI();
+  }
+
+  function hideEditor(commit){
+    if (!editing) return;
+    if (!commit && active) active.el.textContent = editOriginal;
+    editor.style.display = "none";
+    editing = false;
+  }
+
+  function syncFx(){
+    if (!active){
+      addrBadge.textContent = "A1";
+      fxInput.value = "";
+      return;
+    }
+    addrBadge.textContent = addrOf(active);
+    fxInput.value = active.el.textContent ?? "";
+  }
+
+  fxInput.addEventListener('input', ()=>{
+    if (!active) return;
+    active.el.textContent = fxInput.value;
+  });
+  fxInput.addEventListener('keydown', (e)=>{
+    if (!active) return;
+    if (e.key === "Enter"){
+      e.preventDefault();
+      active.el.textContent = fxInput.value;
+      refreshUI();
+    }
+  });
+
+  // viewport 스크롤/리사이즈 시 에디터 위치 보정
+  viewport.addEventListener('scroll', () => { if(editing && active) placeEditorOn(active); });
+  window.addEventListener('resize', () => { if(editing && active) placeEditorOn(active); });
+
+  // ===== Mouse: click / dblclick / drag selection =====
+  table.addEventListener('dragstart', (e)=> e.preventDefault());
+
+  table.addEventListener('dblclick', (e)=>{
+    const td = e.target.closest('td');
+    if(!td) return;
+    const meta = getMetaFromTD(td);
+    if(!meta) return;
+    setSingle(meta);
+    showEditor(meta, { selectAll:true });
+  });
+
+  table.addEventListener('click', (e)=>{
+    const td = e.target.closest('td');
+    if(!td) return;
+    const meta = getMetaFromTD(td);
+    if(!meta) return;
+
+    const isCtrl = e.ctrlKey || e.metaKey;
+
+    if (isCtrl && e.shiftKey) return toggleRange(meta);
+    if (isCtrl) return toggleCell(meta);
+    if (e.shiftKey) return applyShiftRange(meta);
+    setSingle(meta);
+  });
+
+  // Drag selection
+  let dragging = false;
+  let dragMode = "replace"; // replace | add | remove
+  let dragAnchor = null;
+
+  function startDrag(e, meta){
+    const isCtrl = e.ctrlKey || e.metaKey;
+    dragging = true;
+    dragAnchor = (e.shiftKey && anchor) ? anchor : meta;
+
+    if (isCtrl){
+      dragMode = selected.has(keyOf(meta)) ? "remove" : "add";
+      active = meta;
+      if (!anchor) anchor = meta;
+      refreshUI();
+    }else{
+      dragMode = "replace";
+      active = meta;
+      anchor = meta;
+      selected = new Set([keyOf(meta)]);
+      refreshUI();
+    }
+
+    document.body.style.userSelect = "none";
+  }
+
+  function updateDrag(e){
+    if(!dragging) return;
+    const el = document.elementFromPoint(e.clientX, e.clientY);
+    const td = el ? el.closest?.('td') : null;
+    if(!td) return;
+
+    const meta = getMetaFromTD(td);
+    if(!meta) return;
+
+    const rect = mastersInRect(dragAnchor.mr, dragAnchor.mc, meta.mr, meta.mc);
+
+    if (dragMode === "replace"){
+      selected = rect;
+    } else if (dragMode === "add"){
+      for(const k of rect) selected.add(k);
+    } else if (dragMode === "remove"){
+      for(const k of rect) selected.delete(k);
+    }
+
+    active = meta;
+    if (selected.size === 0) selected.add(keyOf(active));
+    refreshUI();
+  }
+
+  function endDrag(){
+    if(!dragging) return;
+    dragging = false;
+    document.body.style.userSelect = "";
+  }
+
+  table.addEventListener('mousedown', (e)=>{
+    if (e.button !== 0) return;
+    const td = e.target.closest('td');
+    if(!td) return;
+
+    const meta = getMetaFromTD(td);
+    if(!meta) return;
+
+    e.preventDefault();
+    hideEditor(true);
+    startDrag(e, meta);
+  });
+
+  window.addEventListener('mousemove', (e)=> updateDrag(e));
+  window.addEventListener('mouseup', ()=> endDrag());
+
+  // ===== Keyboard =====
+  function nextMetaBy(dir){
+    if(!active) return null;
+    const mr = active.mr, mc = active.mc, rs = active.rs, cs = active.cs;
+    let r = mr, c = mc;
+
+    if(dir === "left")  c = mc - 1;
+    if(dir === "right") c = mc + cs;
+    if(dir === "up")    r = mr - 1;
+    if(dir === "down")  r = mr + rs;
+
+    if(r < 0) r = 0;
+    if(c < 0) c = 0;
+
+    return grid[r]?.[c] || null;
+  }
+
+  function selectionBounds(){
+    if(!active || selected.size === 0) return null;
+    let rMin = Infinity, rMax = -Infinity, cMin = Infinity, cMax = -Infinity;
+
+    for(const k of selected){
+      const [r, c] = k.split(':').map(Number);
+      rMin = Math.min(rMin, r);
+      rMax = Math.max(rMax, r);
+      cMin = Math.min(cMin, c);
+      cMax = Math.max(cMax, c);
+    }
+    return { rMin, rMax, cMin, cMax };
+  }
+
+  async function copySelection(){
+    const b = selectionBounds();
+    if(!b) return;
+    const { rMin, rMax, cMin, cMax } = b;
+
+    const lines = [];
+    for(let r=rMin; r<=rMax; r++){
+      const cols = [];
+      for(let c=cMin; c<=cMax; c++){
+        const m = grid[r]?.[c];
+        // ✅ 병합셀 내부(마스터가 아닌 위치)는 빈칸으로 복사
+        if(!m) cols.push("");
+        else if(m.mr !== r || m.mc !== c) cols.push("");
+        else cols.push(m.el.textContent ?? "");
+      }
+      lines.push(cols.join("\t"));
+    }
+    const text = lines.join("\n");
+
+    try{
+      await navigator.clipboard.writeText(text);
+      toast("복사됨 (클립보드)", true);
+    }catch(err){
+      const ta = document.createElement('textarea');
+      ta.value = text;
+      ta.style.position = 'fixed';
+      ta.style.left = '-9999px';
+      document.body.appendChild(ta);
+      ta.select();
+      document.execCommand('copy');
+      document.body.removeChild(ta);
+      toast("복사됨 (fallback)", true);
+    }
+  }
+
+  async function pasteToActive(){
+    if(!active) return;
+    let text = "";
+    try{
+      text = await navigator.clipboard.readText();
+    }catch(err){
+      toast("붙여넣기 권한/클립보드 접근 불가", false);
+      return;
+    }
+    if(!text) return;
+
+    const rows = text.replace(/\r/g,'').split("\n");
+    const startR = active.mr, startC = active.mc;
+
+    for(let dr=0; dr<rows.length; dr++){
+      const cols = rows[dr].split("\t");
+      for(let dc=0; dc<cols.length; dc++){
+        const m = grid[startR + dr]?.[startC + dc];
+        if(!m) continue;
+        if(m.mr !== (startR + dr) || m.mc !== (startC + dc)) continue; // 마스터만
+        m.el.textContent = cols[dc];
+      }
+    }
+    syncFx();
+    refreshUI();
+  }
+
+  window.addEventListener('keydown', async (e)=>{
+    if(editing){
+      if(e.key === "Enter"){ e.preventDefault(); commitEditor(); return; }
+      if(e.key === "Escape"){ e.preventDefault(); hideEditor(false); refreshUI(); return; }
+      return;
+    }
+
+    if(!active){
+      if(masters[0]) setSingle(masters[0]);
+      else return;
+    }
+
+    const isCtrl = e.ctrlKey || e.metaKey;
+
+    if(isCtrl && e.key.toLowerCase() === 'c'){ e.preventDefault(); await copySelection(); return; }
+    if(isCtrl && e.key.toLowerCase() === 'v'){ e.preventDefault(); await pasteToActive(); return; }
+
+    if(e.key === "Enter" || e.key === "F2"){
+      e.preventDefault();
+      showEditor(active, { selectAll:true });
+      return;
+    }
+
+    if(e.key === "Delete" || e.key === "Backspace"){
+      e.preventDefault();
+      for(const k of selected){
+        const [r,c] = k.split(':').map(Number);
+        const m = grid[r]?.[c];
+        if(m && m.mr === r && m.mc === c) m.el.textContent = "";
+      }
+      refreshUI();
+      return;
+    }
+
+    const dir =
+      (e.key === "ArrowLeft")  ? "left" :
+      (e.key === "ArrowRight") ? "right" :
+      (e.key === "ArrowUp")    ? "up" :
+      (e.key === "ArrowDown")  ? "down" : null;
+
+    if(dir){
+      e.preventDefault();
+      const nm = nextMetaBy(dir);
+      if(!nm) return;
+
+      if(e.shiftKey){
+        if(!anchor) anchor = active;
+        active = nm;
+        selected = mastersInRect(anchor.mr, anchor.mc, nm.mr, nm.mc);
+        selected.add(keyOf(nm));
+        refreshUI();
+      }else{
+        setSingle(nm);
+      }
+      return;
+    }
+
+    // 타이핑 시작 → 바로 편집 (seedText)
+    if(!isCtrl && e.key.length === 1){
+      e.preventDefault();
+      showEditor(active, { selectAll:false, seedText: e.key });
+      return;
+    }
+  });
+
+  editorInput.addEventListener('blur', ()=>{
+    if(editing) commitEditor();
+  });
+
+  editorInput.addEventListener('keydown', (e)=>{
+    if(e.key === "Tab"){
+      e.preventDefault();
+      commitEditor();
+      const nm = nextMetaBy(e.shiftKey ? "left" : "right");
+      if(nm) setSingle(nm);
+    }
+  });
+
+  // ===== Local File Save/Load (File System Access API + fallback) =====
+  const supportsFS = ('showOpenFilePicker' in window) && ('showSaveFilePicker' in window);
+
+  // FileHandle을 "로컬에 저장한 파일"처럼 기억하려면 IndexedDB에 보관해야 함
+  // (가능한 브라우저에서만 작동. fallback은 다운로드/업로드 방식)
+  const IDB_DB = "sheet_local_file_db";
+  const IDB_STORE = "kv";
+  const HANDLE_KEY = "last_file_handle";
+  let fileHandle = null;
+
+  function idbOpen(){
+    return new Promise((resolve, reject)=>{
+      const req = indexedDB.open(IDB_DB, 1);
+      req.onupgradeneeded = () => {
+        const db = req.result;
+        if(!db.objectStoreNames.contains(IDB_STORE)){
+          db.createObjectStore(IDB_STORE);
+        }
+      };
+      req.onsuccess = ()=> resolve(req.result);
+      req.onerror = ()=> reject(req.error);
+    });
+  }
+  async function idbSet(key, value){
+    const db = await idbOpen();
+    return new Promise((resolve, reject)=>{
+      const tx = db.transaction(IDB_STORE, "readwrite");
+      tx.objectStore(IDB_STORE).put(value, key);
+      tx.oncomplete = ()=> resolve();
+      tx.onerror = ()=> reject(tx.error);
+    });
+  }
+  async function idbGet(key){
+    const db = await idbOpen();
+    return new Promise((resolve, reject)=>{
+      const tx = db.transaction(IDB_STORE, "readonly");
+      const req = tx.objectStore(IDB_STORE).get(key);
+      req.onsuccess = ()=> resolve(req.result);
+      req.onerror = ()=> reject(req.error);
+    });
+  }
+
+  function collectData(){
+    const obj = {};
+    for(const m of masters){
+      obj[addrOf(m)] = (m.el.textContent ?? "");
+    }
+    return obj;
+  }
+  function applyData(obj){
+    for(const m of masters){
+      const k = addrOf(m);
+      if(obj && Object.prototype.hasOwnProperty.call(obj, k)){
+        m.el.textContent = obj[k];
+      }
+    }
+    refreshUI();
+  }
+  function downloadJSON(obj, filename="sheet_data.json"){
+    const blob = new Blob([JSON.stringify(obj, null, 2)], { type:"application/json" });
+    const a = document.createElement('a');
+    a.href = URL.createObjectURL(blob);
+    a.download = filename;
+    a.click();
+    URL.revokeObjectURL(a.href);
+  }
+
+  async function initLastHandle(){
+    if(!supportsFS) return;
+    try{
+      const h = await idbGet(HANDLE_KEY);
+      if(h) fileHandle = h;
+    }catch(_){}
+  }
+  initLastHandle();
+
+  async function saveFile(){
+    const obj = collectData();
+    const json = JSON.stringify(obj, null, 2);
+
+    // 1) FS API 가능: 선택한 파일에 저장(덮어쓰기 가능)
+    if(supportsFS){
+      try{
+        if(!fileHandle){
+          fileHandle = await window.showSaveFilePicker({
+            suggestedName: "sheet_data.json",
+            types: [{ description:"JSON", accept: { "application/json": [".json"] } }]
+          });
+          await idbSet(HANDLE_KEY, fileHandle);
+        }
+        const writable = await fileHandle.createWritable();
+        await writable.write(json);
+        await writable.close();
+        toast("파일로 저장 완료", true);
+        return;
+      }catch(e){
+        if(e && e.name === "AbortError"){
+          toast("저장 취소", false);
+          return;
+        }
+        // 실패하면 fallback
+        downloadJSON(obj, "sheet_data.json");
+        toast("저장 실패 → 다운로드 방식으로 저장했어", false);
+        return;
+      }
+    }
+
+    // 2) fallback: 다운로드로 로컬 저장
+    downloadJSON(obj, "sheet_data.json");
+    toast("다운로드로 저장 완료", true);
+  }
+
+  async function loadFile(){
+    // 1) FS API 가능: 파일 선택 후 읽기
+    if(supportsFS){
+      try{
+        const [h] = await window.showOpenFilePicker({
+          multiple: false,
+          types: [{ description:"JSON", accept: { "application/json": [".json"] } }]
+        });
+        fileHandle = h;
+        await idbSet(HANDLE_KEY, fileHandle);
+
+        const file = await fileHandle.getFile();
+        const text = await file.text();
+        const obj = JSON.parse(text);
+        applyData(obj);
+        toast("파일 불러오기 완료", true);
+        return;
+      }catch(e){
+        if(e && e.name === "AbortError"){
+          toast("불러오기 취소", false);
+          return;
+        }
+        toast("불러오기 실패: JSON 형식/파일 확인", false);
+        return;
+      }
+    }
+
+    // 2) fallback: input 파일 업로드로 불러오기
+    jsonImport.value = "";
+    jsonImport.click();
+  }
+
+  // fallback 파일 input
+  jsonImport.addEventListener('change', async ()=>{
+    const file = jsonImport.files?.[0];
+    if(!file) return;
+    try{
+      const text = await file.text();
+      const obj = JSON.parse(text);
+      applyData(obj);
+      toast("파일 불러오기 완료", true);
+    }catch(e){
+      toast("JSON 파싱 실패", false);
+    }
+  });
+
+  async function exportJSON(){
+    const obj = collectData();
+    downloadJSON(obj, "sheet_data.json");
+    try{
+      await navigator.clipboard.writeText(JSON.stringify(obj, null, 2));
+      toast("JSON 다운로드 + 클립보드 복사 완료", true);
+    }catch(e){
+      toast("JSON 다운로드 완료", true);
+    }
+  }
+
+  btnSave.addEventListener('click', saveFile);
+  btnLoad.addEventListener('click', loadFile);
+  btnExport.addEventListener('click', exportJSON);
+
+  // 초기 선택
+  if(masters[0]) setSingle(masters[0]);
+
+  // 안내(최초 1회 느낌)
+  if(!supportsFS){
+    toast("이 브라우저/환경은 파일 직접 저장 API가 제한될 수 있어. 저장은 다운로드 방식으로 동작해.", false);
+  }
+});
+  window.addEventListener('message', (ev)=>{
+  const msg = ev.data;
+  if(!msg || typeof msg !== 'object') return;
+
+  // 부모가 값 입력 요청
+  if(msg.type === 'parent:setCellValue'){
+    const { addr, value } = msg;
+    if(!addr) return;
+    setCellValueByAddr(addr, value ?? '');
+    return;
+  }
+
+  if(msg.type === 'parent:bulkSetCellValues'){
+    const items = Array.isArray(msg.items) ? msg.items : [];
+    for(const it of items){
+      if(!it || !it.addr) continue;
+      setCellValueByAddr(it.addr, it.value ?? '');
+    }
+    return;
+  }
+});
+
+// ✅ 여기 구현은 "너의 시트 DOM 구조"에 맞춰야 함
+function setCellValueByAddr(addr, value){
+  // 1) 가장 추천: 각 셀 DOM에 data-addr="A1" 같은 속성이 있을 때
+  let el = document.querySelector(`[data-addr="${addr}"]`);
+
+  // 2) 또는 id="cell-A1" 같은 규칙이면
+  if(!el) el = document.getElementById(`cell-${addr}`);
+
+  // 3) 그래도 없으면 너의 표 렌더링 구조에 맞게 찾아야 함
+  if(!el) return;
+
+  // contenteditable 이면 innerText/ textContent로
+  el.textContent = value;
+}
+
+</script>
+</body>
+</html>
