@@ -1281,7 +1281,7 @@
                 <th id="0R53" style="height: 27px;" class="row-headers-background">
                     <div class="row-header-wrapper" style="line-height: 27px">54</div>
                 </th>
-                <td class="s11">견적금액</td>
+                <td class="s11">견적금액1</td>
                 <td class="s21" dir="ltr">\</td>
                 <td class="s13" colspan="7"></td>
                 <td class="s11" dir="ltr" colspan="2">계 약 금</td>
@@ -2195,6 +2195,71 @@ function setCellValueByAddr(addr, value){
 
   // contenteditable 이면 innerText/ textContent로
   el.textContent = value;
+}
+// ===============================
+// 부모(index.html) -> 시트(iframe) 메시지 수신
+// ===============================
+window.addEventListener('message', (ev) => {
+  const msg = ev.data;
+  if (!msg || typeof msg !== 'object') return;
+
+  // (선택) 핸드셰이크 응답
+  if (msg.type === 'parent:hello') {
+    try { ev.source?.postMessage({ type: 'sheet:ready' }, '*'); } catch(e){}
+    return;
+  }
+
+  if (msg.type === 'parent:setCellValue') {
+    setCellValueByAddr(msg.addr, msg.value ?? '');
+    // (선택) 디버그 ACK
+    try { ev.source?.postMessage({ type:'sheet:ack', addr: msg.addr }, '*'); } catch(e){}
+    return;
+  }
+
+  if (msg.type === 'parent:bulkSetCellValues') {
+    const items = Array.isArray(msg.items) ? msg.items : [];
+    for (const it of items) {
+      setCellValueByAddr(it.addr, it.value ?? '');
+    }
+    // (선택) 디버그 ACK
+    try { ev.source?.postMessage({ type:'sheet:ackBulk', count: items.length }, '*'); } catch(e){}
+    return;
+  }
+});
+
+// ===============================
+// 주소(A1) -> 실제 셀에 값 쓰기
+// ⚠️ 네 시트 구조에 맞게 “셀 찾기/쓰기”만 맞춰주면 됨
+// ===============================
+function setCellValueByAddr(addr, value) {
+  if (!addr) return;
+
+  // 1) 네 시트 코드에 이미 전역 setter가 있다면 그걸 우선 사용
+  // 예: window.setCellValue(addr, value) 같은 함수가 있다면 여기에 연결
+  if (typeof window.setCellValue === 'function') {
+    window.setCellValue(addr, value);
+    return;
+  }
+
+  // 2) DOM 기반 범용 탐색 (네 구현에 맞는 셀 선택자 1개만 맞추면 거의 끝)
+  const cell =
+    document.querySelector(`[data-addr="${addr}"]`) ||
+    document.querySelector(`[data-cell="${addr}"]`) ||
+    document.getElementById(`cell-${addr}`) ||
+    document.getElementById(addr);
+
+  if (!cell) {
+    console.warn('[sheet] cell not found:', addr);
+    return;
+  }
+
+  // 값 반영
+  if ('value' in cell) cell.value = value;
+  else cell.textContent = value;
+
+  // 입력 이벤트(네 시트가 내부 상태 갱신에 input/change를 쓰는 경우 대비)
+  cell.dispatchEvent(new Event('input', { bubbles: true }));
+  cell.dispatchEvent(new Event('change', { bubbles: true }));
 }
 
 </script>
